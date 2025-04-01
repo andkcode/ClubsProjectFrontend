@@ -1,5 +1,5 @@
 <template>
-    <footer class="container flex">
+    <footer class="flex bg-black min-w-screen h-[5rem]">
 
     </footer>
 </template>

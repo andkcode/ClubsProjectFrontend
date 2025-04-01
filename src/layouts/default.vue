@@ -1,18 +1,16 @@
+<script setup lang="ts">
+import Header from '../components/layout/Header.vue';
+import Footer from '../components/layout/Footer.vue';
+</script>
+
 <template>
-  <div class="container flex flex-col min-h-screen transition-colors duration-300">
-    <Header> 
+  <div class="flex flex-col min-h-screen w-full">
+    <Header />
 
-    </Header>
-
-    <main>
+    <main class="flex-grow bg-white">
 
     </main>
-    <Footer> 
 
-    </Footer>
+    <Footer />
   </div>
 </template>
-<script setup lang="ts">
-import Header from '../components/layout/Header.vue'
-import Footer from '../components/layout/Footer.vue'
-</script>
