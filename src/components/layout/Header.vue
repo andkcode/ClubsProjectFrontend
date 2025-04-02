@@ -21,6 +21,13 @@
       <div class="text-white text-xl font-bold tracking-wider hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-400 hover:to-pink-600 transition-all duration-500">
        <img src="/src/assets/logo.png" alt="logo.png" class="w-[100%] h-[5rem]">
       </div>
+
+      <div class="relative w-full px-6 h-[2.5rem] max-w-xl flex items-center rounded-full bg-white border border-gray-300 shadow-lg backdrop-blur-md transition-all duration-300 hover:shadow-xl focus-within:border-black">
+        <i class="pi pi-search text-[1.3rem] text-gray-500"></i>
+        <input type="text" placeholder="Search" class="ml-3 flex-1 bg-transparent text-black placeholder-gray-400 focus:outline-none" />
+      </div>
+
+      
       
       <nav class="hidden md:flex space-x-8">
         <a href="#" class="nav-link group">
