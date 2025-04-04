@@ -2,7 +2,7 @@
     <footer class="relative flex items-center justify-center min-w-screen h-20 overflow-hidden border-t-2">
       <div class="absolute inset-0 bg-gray-100"></div>
       
-      <div class="absolute inset-0 bg-gradient-to-r from-purple-600/20 via-pink-500/20 to-blue-600/20 animate-gradient-x opacity-30"></div>
+      <div class="absolute inset-0 bg-white"></div>
       
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <div class="particle"></div>

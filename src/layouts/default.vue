@@ -9,7 +9,7 @@ import Clubs from '../pages/Clubs.vue';
     <Header />
 
     <main class="flex-grow w-full relative">
-      <div class="absolute inset-0 animate-gradient-x"></div>
+      <div class="absolute bg-white"></div>
       <Clubs />
     </main>
 
