@@ -30,24 +30,24 @@
       
       
       <nav class="hidden md:flex space-x-8">
-        <a href="#" class="nav-link group">
+        <router-link class="nav-link group" :to="`/`">
           <span class="relative text-black group-hover:text-pink-500 transition-colors duration-300">
             Home
             <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
           </span>
-        </a>
-        <a href="#" class="nav-link group">
+        </router-link>
+        <router-link class="nav-link group" :to="`/clubs`">
           <span class="relative text-black group-hover:text-purple-400 transition-colors duration-300">
             Clubs
             <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
           </span>
-        </a>
-        <a href="#" class="nav-link group">
+        </router-link>
+        <router-link class="nav-link group" :to="`/events`">
           <span class="relative text-black group-hover:text-blue-500 transition-colors duration-300">
             Events
             <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
           </span>
-        </a>
+        </router-link>
         <a href="#" class="nav-link group">
             <i class="pi pi-user text-[1.5rem] text-black group-hover:text-orange-400 transition-colors duration-300 relative text-black transition-colors"></i>
             <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
