@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import MainView from "./layouts/default.vue";
+import MainView from './layouts/default.vue';
 </script>
 
 <template>
-  <MainView/>
+  <MainView />
 </template>
 
 <style>
