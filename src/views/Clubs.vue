@@ -28,7 +28,6 @@ export default {
     async getAllClubs() {
       try {
         const response = await ClubsService.getAllClubs();
-        console.log(response);
         this.clubs = response;
       } catch (error) {
         console.error(error);
