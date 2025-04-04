@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/clubs";
+const API_URL = "http://localhost:8080/clubs";
 const AUTH_HEADER = {
     auth: {
         username: "AndrewQuifinity",
