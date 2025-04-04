@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Header from '../components/layout/Header.vue';
 import Footer from '../components/layout/Footer.vue';
-import Clubs from '../pages/Clubs.vue';
 </script>
 
 <template>
@@ -9,8 +8,7 @@ import Clubs from '../pages/Clubs.vue';
     <Header />
 
     <main class="flex-grow w-full relative">
-      <div class="absolute bg-white"></div>
-      <Clubs />
+      <router-view />
     </main>
 
     <Footer />
