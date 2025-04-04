@@ -27,31 +27,31 @@ const routes: RouteRecordRaw[] = [
     path: '/events',
     name: 'Events',
     component: Events,
-    beforeEnter: (to, from, next) => {
-      const isAuthenticated = localStorage.getItem('auth-token');
-      if (isAuthenticated) {
-        next();
-      } else {
-        next({ name: 'Login' });
-      }
-    },
-    // children: [
-    //   {
-    //     path: 'profile',
-    //     name: 'DashboardProfile',
-    //     component: () => import('../views/DashboardProfile.vue'),
-    //   },
-    //   {
-    //     path: 'settings',
-    //     name: 'DashboardSettings',
-    //     component: () => import('../views/DashboardSettings.vue'),
-    //   },
-    // ],
-  },
-  {
-    path: '/:pathMatch(.*)*', // This is the 404 route
-    name: 'NotFound',
-    component: () => import('../pages/NotFound.vue'),
+  //   beforeEnter: (to, from, next) => {
+  //     const isAuthenticated = localStorage.getItem('auth-token');
+  //     if (isAuthenticated) {
+  //       next();
+  //     } else {
+  //       next({ name: 'Login' });
+  //     }
+  //   },
+  //   // children: [
+  //   //   {
+  //   //     path: 'profile',
+  //   //     name: 'DashboardProfile',
+  //   //     component: () => import('../views/DashboardProfile.vue'),
+  //   //   },
+  //   //   {
+  //   //     path: 'settings',
+  //   //     name: 'DashboardSettings',
+  //   //     component: () => import('../views/DashboardSettings.vue'),
+  //   //   },
+  //   // ],
+  // },
+  // {
+  //   path: '/:pathMatch(.*)*', // This is the 404 route
+  //   name: 'NotFound',
+  //   component: () => import('../pages/NotFound.vue'),
   },
 ];
 
