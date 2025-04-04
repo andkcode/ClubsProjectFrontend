@@ -6,42 +6,38 @@
       </div>
       <div class="row gx-5">
         <div class="col-lg-6 mb-2" v-for="club in clubs" :key="club.id">
-          <div class="position-relative mb-3">
-            <img class="img-fluid rounded-3 mb-3" :src="club.photoUrl" alt="Club Image" />
-            <a class="h3 fw-bolder text-decoration-none link-dark stretched-link text-black" :href="'#'">{{ club.title }}</a>
-          </div>
-          <router-link :to="`/clubs/${club.id}`" class="btn btn-primary">View</router-link>
+          <CardClub :id="club.id" :photo="club.photoUrl" :title="club.title" :description="club.content" />
         </div>
       </div>
     </div>
   </template>
   
-  <script setup lang="ts">
-  import { ref, onMounted } from 'vue';
-  
-  // Define the Club interface
-  interface Club {
-    id: number;
-    title: string;
-    photoUrl: string;
-  }
-  
-  // State
-  const clubs = ref<Club[]>([]);
-  
-  // Fetch clubs on component mount
-  onMounted(() => {
-    fetchClubs();
-  });
-  
-  // Method to fetch clubs
-  const fetchClubs = async () => {
-    try {
-      // Replace with your actual API call
-      const response = await fetch('/api/clubs');
-      clubs.value = await response.json();
-    } catch (error) {
-      console.error('Error fetching clubs:', error);
-    }
-  };
+<script>
+import CardClub from '../components/CardClub.vue';
+import ClubsService from '../composables/ClubsService';
+
+export default {
+  name: 'Clubs',
+  components: { CardClub },
+  data() {
+    return {
+      clubs: [],
+    };
+  },
+  methods: {
+    async getAllClubs() {
+      try {
+        const response = await ClubsService.getAllClubs();
+        console.log(response);
+        this.clubs = response;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
+  created() {
+    this.getAllClubs();
+  },
+};
+
   </script>
