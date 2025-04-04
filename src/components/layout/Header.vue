@@ -19,7 +19,7 @@
     
     <div class="relative z-10 w-full px-6 max-w-7xl mx-auto flex justify-between items-center">
       <div class="text-white text-xl font-bold tracking-wider hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-400 hover:to-pink-600 transition-all duration-500">
-       <img src="/src/assets/logo.png" alt="logo.png" class="w-[100%] h-[5rem]">
+       <router-link class="hover:cursor-pointer" :to="`/`"><img src="/src/assets/logo.png" alt="logo.png" class="w-[100%] h-[5rem]"></router-link>
       </div>
 
       <div class="relative w-full px-6 h-[2.5rem] max-w-xl flex items-center rounded-full bg-white border border-gray-300 shadow-lg backdrop-blur-md transition-all duration-300 hover:shadow-xlr focus-within:border-black">
