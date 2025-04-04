@@ -6,7 +6,7 @@
       </div>
       <div class="row gx-5">
         <div class="col-lg-6 mb-2" v-for="club in clubs" :key="club.id">
-          <CardClub :id="club.id" :photo="club.photoUrl" :title="club.title" :description="club.description" />
+          <CardClub :id="club.id" :photo="club.photoUrl" :title="club.title" :description="club.description" :createdOn="club.createdOn" :updatedOn="club.updatedOn" />
         </div>
       </div>
     </div>
