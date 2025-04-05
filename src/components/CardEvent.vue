@@ -1,18 +1,18 @@
 <template>
-    <div class="flex flex-col w-[32rem] h-[26rem] bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
+    <div class="flex flex-col w-[34rem] h-[27rem] bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
       <img :src="photo" alt="URL PHOTO LINK" class="w-full h-[17rem]" />
       <div class="overflow-auto h-full p-4 invisible-scrollbar">
-        <div class="flex flex-row justify-between">
+        <div class="flex flex-row justify-between items-center">
         <h1 class="text-xl font-semibold text-gray-900 whitespace-normal">{{ title }}</h1>
-        <div class="flex flex-row space-x-2">
+        <div class="flex flex-row space-x-2 self-start">
         <p class="text-gray-600 text-m">{{ formattedStartTime }}</p>
         <p class="text-black text-m text-end font-bold">/</p>
         <p class="text-gray-600 text-m">{{ formattedEndTime }}</p>
         </div>
       </div>
-        <p class="text-gray-600 text-m">{{ description }}</p>
-        <p class="text-gray-600 text-m">{{ type }}</p>
-        <div class="flex flex-row justify-between">
+        <p class="text-gray-600 text-m mb-2 font-medium">{{ type }}</p>
+        <p class="text-gray-600 text-m mb-2">{{ description }}</p>
+        <div class="flex flex-row justify-between mt-2">
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer"><router-link :to="`/clubs/{id}`">View</router-link></button>
         <div class="flex flex-row space-x-2 items-end">
         <p class="text-gray-600 text-m text-end">{{ formattedCreatedOn }}</p>
