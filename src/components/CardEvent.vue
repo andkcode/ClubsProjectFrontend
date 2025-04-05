@@ -1,9 +1,9 @@
 <template>
     <div class="flex flex-col w-[32rem] h-[26rem] bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
       <img :src="photo" alt="URL PHOTO LINK" class="w-full h-[17rem]" />
-      <div class="p-4">
+      <div class="overflow-auto h-full p-4 invisible-scrollbar">
         <div class="flex flex-row justify-between">
-        <h1 class="text-xl font-semibold text-gray-900">{{ title }}</h1>
+        <h1 class="text-xl font-semibold text-gray-900 whitespace-normal">{{ title }}</h1>
         <div class="flex flex-row space-x-2">
         <p class="text-gray-600 text-m">{{ formattedStartTime }}</p>
         <p class="text-black text-m text-end font-bold">/</p>
@@ -80,4 +80,15 @@ const formattedEndTime = computed(() =>
 )
 
 </script>
+
+<style>
+.invisible-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.invisible-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+</style>
   
