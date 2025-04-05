@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import 'primeicons/primeicons.css';
+@plugin 'tailwind-scrollbar';
+
 
 body {
   display: flex;
