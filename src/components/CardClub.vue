@@ -4,7 +4,7 @@
       <div class="p-4">
         <div class="flex flex-row justify-between">
         <h1 class="text-xl font-semibold text-gray-900">{{ title }}</h1>
-        <p class="text-black text-lg font-bold text-end">asdfasf</p>
+        <p class="text-black text-lg font-bold text-end">{{ formattedCreatedBy }}</p>
       </div>
         <p class="text-gray-600 text-m mb-2">{{ description }}</p>
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer"><router-link :to="`/clubs/{id}`">View</router-link></button>
@@ -25,8 +25,8 @@ const props = defineProps({
   photo: String,
   title: String,
   description: String,
-  createdOn: Date,
-  updatedOn: Date,
+  createdOn: String,
+  updatedOn: String,
   createdBy: String,
 })
 
@@ -39,6 +39,7 @@ const formattedCreatedOn = computed(() =>
     minute: '2-digit',
   }).replace(',', '') : ''
 )
+
 const formattedUpdatedOn = computed(() =>
   props.updatedOn ? new Date(props.updatedOn).toLocaleString('en-GB', {
     year: 'numeric',
@@ -48,5 +49,18 @@ const formattedUpdatedOn = computed(() =>
     minute: '2-digit',
   }).replace(',','') : ''
 )
+
+const formattedCreatedBy = computed(() => {
+  if (typeof props.createdBy === 'object' && props.createdBy !== null) {
+    return props.createdBy.username || ''; 
+  }
+  
+  if (typeof props.createdBy === 'string') {
+    const atIndex = props.createdBy.indexOf('@');
+    return atIndex !== -1 ? props.createdBy.slice(0, atIndex) : props.createdBy;
+  }
+  
+  return '';  
+});
 </script>
   
