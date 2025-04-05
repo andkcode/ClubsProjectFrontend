@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col w-[32rem] h-[27.5rem] bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
+    <div class="flex flex-col w-[32rem] h-[26rem] bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
       <img :src="photo" alt="URL PHOTO LINK" class="w-full h-[17rem]" />
       <div class="p-4">
         <div class="flex flex-row justify-between">
@@ -12,11 +12,13 @@
       </div>
         <p class="text-gray-600 text-m">{{ description }}</p>
         <p class="text-gray-600 text-m">{{ type }}</p>
+        <div class="flex flex-row justify-between">
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer"><router-link :to="`/clubs/{id}`">View</router-link></button>
-        <div class="flex flex-row justify-end space-x-2">
+        <div class="flex flex-row space-x-2 items-end">
         <p class="text-gray-600 text-m text-end">{{ formattedCreatedOn }}</p>
         <p class="text-black text-m text-end font-bold">/</p>
         <p class="text-gray-600 text-m text-end">{{ formattedUpdatedOn }}</p>
+        </div>
       </div>
       </div>
     </div>
