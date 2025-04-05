@@ -13,7 +13,7 @@
         <p class="text-gray-600 text-m mb-2 font-medium">{{ type }}</p>
         <p class="text-gray-600 text-m mb-2">{{ description }}</p>
         <div class="flex flex-row justify-between mt-2">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer"><router-link :to="`/clubs/{id}`">View</router-link></button>
+        <ButtonView />
         <div class="flex flex-row space-x-2 items-end">
         <p class="text-gray-600 text-m text-end">{{ formattedCreatedOn }}</p>
         <p class="text-black text-m text-end font-bold">/</p>
@@ -25,6 +25,7 @@
   </template>
   
 <script setup>
+import ButtonView from './ButtonView.vue';
 import { defineProps } from 'vue';
 import { computed } from 'vue';
 const props = defineProps({
