@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col w-[32rem] h-[26.5rem] bg-white border border-gray-200 rounded-lg shadow-md ">
+    <div class="flex flex-col w-[32rem] h-[26.5rem] bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
       <img :src="photo" alt="URL PHOTO LINK" class="w-full h-[17rem]" />
       <div class="p-4">
         <div class="flex flex-row justify-between">
