@@ -20,7 +20,7 @@ const routes: RouteRecordRaw[] = [
     component: Clubs,
   },
   {
-    path: '/club/:id',
+    path: '/clubs/:id',
     name: 'ClubDetails',
     component: ClubDetails,
   },
