@@ -8,6 +8,7 @@ const AUTH_HEADER = {
     },
     headers: {
         "Content-Type": "application/json",
+        
     },
 };
 
