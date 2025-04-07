@@ -20,7 +20,7 @@ export default class EventsService {
 
     static async getEventsById(id: number) {
         try {
-            const response = await axios.get(`${API_URL}/${id}`, AUTH_HEADER);
+            const response = await axios.get(`${API_URL}/event/${id}`, AUTH_HEADER);
             return response.data;
         } catch (error) {
             console.error(`Error fetching events ${id}:`, error);
@@ -30,10 +30,10 @@ export default class EventsService {
 
     static async getEventByClubId(id: number) {
         try {
-            const response = await axios.get(`${API_URL}/${id}`, AUTH_HEADER);
+            const response = await axios.get(`${API_URL}/club/${id}`, AUTH_HEADER);
             return response.data;
         } catch (error) {
-            console.error(`Error fetching events from certain ${id} of club:`, error);
+            console.error(`Error fetching events from club ${id}:`, error);
             throw error;
         }
     }
