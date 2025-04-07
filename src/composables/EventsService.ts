@@ -28,6 +28,16 @@ export default class EventsService {
         }
     }
 
+    static async getEventByClubId(id: number) {
+        try {
+            const response = await axios.get(`${API_URL}/${id}`, AUTH_HEADER);
+            return response.data;
+        } catch (error) {
+            console.error(`Error fetching events from certain ${id} of club:`, error);
+            throw error;
+        }
+    }
+
     static async createEvents(event: any) {
         try {
             const response = await axios.post(`${API_URL}/admin`, event, AUTH_HEADER);
