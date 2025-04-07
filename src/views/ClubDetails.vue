@@ -33,7 +33,7 @@
         <!-- Meta info -->
         <div class="mt-6 border-t space-y-1 pt-4 flex flex-col text-sm text-gray-500">
           <p class="space-x-2"><i class="pi pi-user" />Created by: <span class="font-semibold text-gray-700">{{ formattedCreatedBy }}</span></p>
-          <p class="space-x-2"><i class="pi pi-calendar" />Created: <span class="font-semibold text-gray-500">{{ formattedCreatedOn }}</span></p>
+          <p class="space-x-2"><i class="pi pi-calendar" />Created: <span class="font-semibold text-gray-600">{{ formattedCreatedOn }}</span></p>
           <p class="space-x-2"><i class="pi pi-pencil" />Updated: <span class="font-semibold text-gray-500">{{ formattedUpdatedOn }}</span></p>
         </div>
 
@@ -52,7 +52,7 @@
       <h2 class="text-2xl font-semibold mb-4">Upcoming Events</h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div
-          v-for="event in club.events || [demoEvent, demoEvent2]"
+          v-for="event in club.events"
           :key="event.id"
           class="bg-white shadow-md rounded-xl p-4 hover:shadow-xl transition"
         >
@@ -74,20 +74,6 @@ export default {
   data() {
     return {
       club: {},
-      demoEvent: {
-        id: 1,
-        title: "Hackathon 2024",
-        description: "A cool event for all club members",
-        photoUrl: "https://source.unsplash.com/random/400x200?tech",
-        date: new Date(),
-      },
-      demoEvent2: {
-        id: 2,
-        title: "Gaming Night",
-        description: "Join us for a chill gaming session",
-        photoUrl: "https://source.unsplash.com/random/400x200?game",
-        date: new Date(),
-      },
     };
   },
   created() {
