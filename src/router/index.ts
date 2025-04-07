@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory} from 'vue-router';
 
 import type { RouteRecordRaw } from 'vue-router';
+const ClubDetails = () => import('../views/ClubDetails.vue');
 const Home = () => import('../views/Home.vue');
 const Clubs = () => import('../views/Clubs.vue');
 const Events = () => import('../views/Events.vue');
@@ -17,6 +18,11 @@ const routes: RouteRecordRaw[] = [
     path: '/clubs',
     name: 'Clubs',
     component: Clubs,
+  },
+  {
+    path: '/club/:id',
+    name: 'ClubDetails',
+    component: ClubDetails,
   },
   // {
   //   path: '/login',
