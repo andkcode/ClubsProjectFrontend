@@ -12,8 +12,8 @@
       <div class="p-8 flex-1 flex flex-col justify-between">
         <!-- Title & Location -->
         <div>
-          <h1 class="text-4xl font-bold text-gray-900 mb-1">{{ club.title }}</h1>
-          <p class="text-gray-600 mb-4">📍 Location of club</p>
+          <h1 class="text-5xl font-bold text-gray-900 mb-3">{{ club.title }}</h1>
+          <p class="text-gray-600 mb-4"><i class="pi pi-map-marker"></i> Location of club</p>
 
           <!-- Tags -->
           <div class="flex flex-wrap gap-2 mb-4">
@@ -31,10 +31,10 @@
         </div>
 
         <!-- Meta info -->
-        <div class="mt-6 border-t pt-4 flex justify-between text-sm text-gray-500">
-          <p>👤 Created by: <span class="font-semibold text-gray-700">{{ formattedCreatedBy }}</span></p>
-          <p>📅 Created: {{ formattedCreatedOn }}</p>
-          <p>📝 Updated: {{ formattedUpdatedOn }}</p>
+        <div class="mt-6 border-t space-y-1 pt-4 flex flex-col text-sm text-gray-500">
+          <p class="space-x-2"><i class="pi pi-user" />Created by: <span class="font-semibold text-gray-700">{{ formattedCreatedBy }}</span></p>
+          <p class="space-x-2"><i class="pi pi-calendar" />Created: <span class="font-semibold text-gray-500">{{ formattedCreatedOn }}</span></p>
+          <p class="space-x-2"><i class="pi pi-pencil" />Updated: <span class="font-semibold text-gray-500">{{ formattedUpdatedOn }}</span></p>
         </div>
 
         <!-- Actions -->
@@ -42,6 +42,7 @@
           <button class="px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition">Join</button>
           <button class="px-4 py-2 bg-yellow-400 text-black rounded-xl hover:bg-yellow-500 transition">Edit</button>
           <button class="px-4 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 transition">Delete</button>
+          <button class="px-4 py-2 bg-green-600 text-white rounded-xl hover:bg-green-700 transition">Сreate Event</button>
         </div>
       </div>
     </div>
