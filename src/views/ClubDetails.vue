@@ -52,14 +52,13 @@
       <h2 class="text-2xl font-semibold mb-4">Upcoming Events</h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div
-          v-for="event in club.events"
+          v-for="event in events"
           :key="event.id"
           class="bg-white shadow-md rounded-xl p-4 hover:shadow-xl transition"
         >
           <img :src="event.photoUrl" alt="Event" class="w-full h-40 object-cover rounded-lg mb-3" />
           <h3 class="text-lg font-semibold">{{ event.title }}</h3>
           <p class="text-gray-600 text-sm">{{ event.description }}</p>
-          <p class="text-xs text-gray-500 mt-2">🕒 {{ formatDate(event.date) }}</p>
         </div>
       </div>
     </div>
@@ -69,15 +68,18 @@
 <script>
 import { useRoute } from "vue-router";
 import ClubsService from "../composables/ClubsService";
+import EventsService from "../composables/EventsService";
 
 export default {
   data() {
     return {
       club: {},
+      events: [],
     };
   },
   created() {
     this.getClubById();
+    this.getEventByClubId();
   },
   methods: {
     async getClubById() {
@@ -85,6 +87,16 @@ export default {
         const clubId = this.$route.params.id;
         const response = await ClubsService.getClubById(clubId);
         this.club = response;
+      } catch (error) {
+        console.error(error);
+      }
+    }, 
+    async getEventByClubId() {
+      try {
+        const clubId = this.$route.params.id;
+        const response = await EventsService.getEventByClubId(clubId);
+        this.events = response;
+        console.log(response);
       } catch (error) {
         console.error(error);
       }
