@@ -6,19 +6,19 @@
       </div>
       <div class="row gx-5">
         <div class="col-lg-6 mb-2" v-for="club in clubs" :key="club.id">
-          <CardClub :id="club.id" :photo="club.photoUrl" :title="club.title" :description="club.description" :createdOn="club.createdOn" :updatedOn="club.updatedOn" :createdBy="club.createdBy" />
+          <ClubCard :id="club.id" :photo="club.photoUrl" :title="club.title" :description="club.description" :createdOn="club.createdOn" :updatedOn="club.updatedOn" :createdBy="club.createdBy" />
         </div>
       </div>
     </div>
   </template>
   
 <script>
-import CardClub from '../components/CardClub.vue';
+import ClubCard from '../components/ClubCard.vue';
 import ClubsService from '../composables/ClubsService';
 
 export default {
   name: 'Clubs',
-  components: { CardClub },
+  components: { ClubCard },
   data() {
     return {
       clubs: [],

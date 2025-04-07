@@ -13,7 +13,7 @@
   </template>
   
 <script>
-import CardEvent from '../components/CardEvent.vue';
+import CardEvent from '../components/EventCard.vue';
 import EventsService from '../composables/EventsService';
 
 export default {
