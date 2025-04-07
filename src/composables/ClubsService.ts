@@ -2,15 +2,11 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8080/clubs";
 const AUTH_HEADER = {
-    auth: {
-        username: "AndrewQuifinity",
-        password: "jdDDmvReH-Z$v!tNvFv{j=#49r7I",
-    },
     headers: {
-        "Content-Type": "application/json",
-        
+      "Content-Type": "application/json",
     },
-};
+  };
+  
 
 export default class ClubsService {
     static async getAllClubs() {
