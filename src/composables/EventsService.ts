@@ -2,10 +2,6 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8080/events";
 const AUTH_HEADER = {
-    auth: {
-        username: "AndrewQuifinity",
-        password: "jdDDmvReH-Z$v!tNvFv{j=#49r7I",
-    },
     headers: {
         "Content-Type": "application/json",
     },
