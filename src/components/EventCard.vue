@@ -130,29 +130,35 @@ const props = defineProps({
   },
 });
 
-const formattedCreatedOn = computed(() =>
-  props.createdOn
-    ? new Date(props.createdOn)
-        .toLocaleString("en-GB", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit",
-        })
-        .replace(",", "")
-    : "",
-);
+const isGoing = ref(false);
 
-const formattedUpdatedOn = computed(() =>
-  props.updatedOn
-    ? new Date(props.updatedOn)
-        .toLocaleString("en-GB", {
-          year: "numeric",
-          month: "2-digit",
+function toggleRSVP() {
+  isGoing.value = !isGoing.value;
+}
+
+function addToCalendar() {
+  const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+    props.title,
+  )}&dates=${formatForCalendar(props.startTime)}/${formatForCalendar(
+    props.endTime,
+  )}&details=${encodeURIComponent(props.description)}&location=&sf=true&output=xml`;
+  window.open(url, "_blank");
+}
+
+function formatForCalendar(dateStr) {
+  const date = new Date(dateStr);
+  return date
+    .toISOString()
+    .replace(/[-:]/g, "")
+    .split(".")[0] + "Z";
+}
+
+const formattedStartDate = computed(() =>
+  props.startTime
+    ? new Date(props.startTime).toLocaleDateString("ru-RU", {
           day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit",
+        month: "short",
+          year: "numeric",
         })
         .replace(",", "")
     : "",
