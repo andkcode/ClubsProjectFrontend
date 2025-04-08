@@ -17,10 +17,13 @@
         </div>
       </div>
 
+<div class="p-10 flex-1 flex flex-col justify-between space-y-4">
+        <div>
+          <h1 class="text-4xl font-extrabold text-gray-900 mb-2">{{ club.title }}</h1>
+          <p class="text-gray-600 italic mb-6 text-sm">“{{ club.slogan || 'A place for everyone.' }}”</p>
+          <div class="prose max-w-none text-gray-800 whitespace-pre-wrap">
+            {{ club.description }}
           </div>
-
-          <!-- Description -->
-          <p class="text-gray-700 text-base whitespace-pre-wrap">{{ club.description }}</p>
         </div>
 
         <!-- Meta info -->
