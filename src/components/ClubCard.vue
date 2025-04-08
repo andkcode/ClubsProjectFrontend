@@ -42,22 +42,37 @@
         </div>
       </div>
 
-      <!-- Теги -->
-      <div class="flex flex-wrap gap-2 mb-2">
+      <div class="flex flex-wrap gap-2">
         <span
           v-for="tag in tags"
           :key="tag"
-          class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded-full"
+          class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-1 rounded-full cursor-pointer hover:bg-indigo-200 transition"
         >
-          {{ tag }}
+          #{{ tag }}
         </span>
       </div>
 
-      <!-- Описание -->
-      <div class="flex-1 overflow-auto invisible-scrollbar mb-3">
-        <p class="text-sm text-gray-700 whitespace-pre-wrap break-words leading-relaxed">
+      <div class="flex-1 overflow-auto invisible-scrollbar text-sm text-gray-700 whitespace-pre-wrap break-words leading-relaxed">
           {{ description }}
-        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 mt-1 text-xs text-gray-600">
+        <div class="flex items-center space-x-2">
+          <span class="font-semibold text-gray-800">📅 Events:</span>
+          <span>{{ events }}</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="font-semibold text-gray-800">👥 Members:</span>
+          <span>{{ members }}</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="font-semibold text-gray-800">🏷️ Category:</span>
+          <span>{{ category }}</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="font-semibold text-gray-800">🧩 Roles:</span>
+          <span>{{ roles.join(', ') }}</span>
+        </div>
       </div>
 
       <!-- Низ: кнопка + даты -->
