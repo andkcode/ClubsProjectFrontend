@@ -5,15 +5,27 @@
     <div class="relative h-[16rem] w-full">
     <img
       :src="photo"
-      alt="Club photo"
-      class="w-full h-[16rem] object-cover"
-    />
+        alt="Club cover"
+        class="w-full h-full object-cover"
+      />
+      <button
+        @click="toggleFavorite"
+        class="absolute top-3 right-3 bg-white/80 hover:bg-white text-yellow-500 rounded-full p-2 shadow-md transition"
+        :title="isFavorite ? 'Remove from favorites' : 'Add to favorites'"
+      >
+        <span v-if="isFavorite">★</span>
+        <span v-else>☆</span>
+      </button>
+      <div
+        class="absolute bottom-3 left-3 bg-black/50 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm"
+      >
+        {{ formattedLocation }}
+      </div>
+    </div>
 
-    <!-- Контент -->
-    <div class="flex flex-col justify-between h-full p-4 pt-3">
-      <!-- Верх: заголовок + автор -->
-      <div class="flex justify-between items-start mb-2">
-        <h1 class="text-xl font-bold text-gray-900 leading-snug break-words max-w-[60%]">
+    <div class="flex flex-col justify-between h-full p-4 pt-3 space-y-2">
+      <div class="flex justify-between items-start">
+        <h1 class="text-2xl font-extrabold text-gray-900 leading-snug break-words max-w-[65%]">
           {{ title }}
         </h1>
         <p class="text-sm text-gray-500 text-right font-medium truncate max-w-[40%]">
