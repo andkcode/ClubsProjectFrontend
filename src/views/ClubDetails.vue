@@ -7,17 +7,17 @@
           {{ club.location || 'Unknown Location' }}
         </div>
         <div class="absolute bottom-4 left-4 flex gap-2">
-            <span
+          <span
             v-for="tag in club.tags || ['Music', 'Art']"
-              :key="tag"
+            :key="tag"
             class="bg-white/80 text-gray-800 text-xs font-semibold px-3 py-1 rounded-full"
-            >
+          >
             #{{ tag }}
-            </span>
+          </span>
         </div>
       </div>
 
-<div class="p-10 flex-1 flex flex-col justify-between space-y-4">
+      <div class="p-10 flex-1 flex flex-col justify-between space-y-4">
         <div>
           <h1 class="text-4xl font-extrabold text-gray-900 mb-2">{{ club.title }}</h1>
           <p class="text-gray-600 italic mb-6 text-sm">“{{ club.slogan || 'A place for everyone.' }}”</p>
@@ -121,55 +121,33 @@ export default {
       } catch (err) {
         console.error(err);
       }
-    }, 
-    async getEventByClubId() {
+    },
+    async getEventsByClubId() {
       try {
         const clubId = this.$route.params.id;
-        const response = await EventsService.getEventByClubId(clubId);
-        this.events = response;
-        console.log(response);
-      } catch (error) {
-        console.error(error);
+        this.events = await EventsService.getEventByClubId(clubId);
+      } catch (err) {
+        console.error(err);
       }
     },
     formatDate(date) {
-      return new Date(date).toLocaleString("en-GB", {
-        year: "numeric",
-        month: "short",
-        day: "2-digit",
-        hour: "2-digit",
-        minute: "2-digit",
+      return new Date(date).toLocaleString('en-GB', {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
       });
     },
-  },
-  computed: {
-    formattedCreatedOn() {
-      return this.club.createdOn
-        ? this.formatDate(this.club.createdOn)
-        : "";
-    },
-    formattedUpdatedOn() {
-      return this.club.updatedOn
-        ? this.formatDate(this.club.updatedOn)
-        : "";
-    },
-    formattedCreatedBy() {
-      if (typeof this.club.createdBy === "object" && this.club.createdBy !== null) {
-        return this.club.createdBy.username || "";
-      }
-      if (typeof this.club.createdBy === "string") {
-        const atIndex = this.club.createdBy.indexOf("@");
-        return atIndex !== -1 ? this.club.createdBy.slice(0, atIndex) : this.club.createdBy;
-      }
-      return "";
+    truncate(text, maxLength) {
+      return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
     },
   },
 };
 </script>
 
 <style scoped>
-/* Optional custom scrollbar styling */
-.invisible-scrollbar::-webkit-scrollbar {
-  display: none;
+.prose p {
+  margin: 0;
 }
 </style>
