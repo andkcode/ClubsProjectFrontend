@@ -58,11 +58,15 @@
           :key="event.id"
           class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition group"
         >
-          <img :src="event.photoUrl" alt="Event" class="w-full h-40 object-cover rounded-lg mb-3" />
-          <h3 class="text-lg font-semibold">{{ event.title }}</h3>
-          <p class="text-gray-600 text-sm">{{ event.description }}</p>
+          <img :src="event.photoUrl" alt="Event" class="w-full h-44 object-cover group-hover:scale-105 transition-transform" />
+          <div class="p-4">
+            <h3 class="text-lg font-semibold mb-1">{{ event.title }}</h3>
+            <p class="text-gray-500 text-sm mb-2">{{ formatDate(event.date) }}</p>
+            <p class="text-gray-700 text-sm">{{ truncate(event.description, 100) }}</p>
+          </div>
         </div>
       </div>
+      <div v-else class="text-gray-500 italic mt-4">No events found.</div>
     </div>
   </div>
 </template>
