@@ -102,8 +102,8 @@
 
 <script setup>
 import ButtonView from "./ButtonView.vue";
-import { defineProps } from "vue";
-import { computed } from "vue";
+import { ref, computed } from "vue";
+
 const props = defineProps({
   id: Number,
   photo: String,
@@ -113,7 +113,21 @@ const props = defineProps({
   endTime: String,
   type: String,
   createdOn: String,
-  updatedOn: String,
+  views: {
+    type: Number,
+    default: 256,
+  },
+  likes: {
+    type: Number,
+    default: 42,
+  },
+  organizer: {
+    type: Object,
+    default: () => ({
+      name: "John Doe",
+      avatar: "https://i.pravatar.cc/40",
+    }),
+  },
 });
 
 const formattedCreatedOn = computed(() =>
