@@ -42,14 +42,21 @@
       </div>
     </div>
 
-    <!-- Events -->
-    <div class="max-w-7xl mx-auto mt-10">
-      <h2 class="text-2xl font-semibold mb-4">Upcoming Events</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="max-w-7xl mx-auto mt-12">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-3xl font-bold">Upcoming Events</h2>
+        <input
+          v-model="search"
+          placeholder="Search events..."
+          class="px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-300"
+        />
+      </div>
+
+      <div v-if="filteredEvents.length" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div
-          v-for="event in events"
+          v-for="event in filteredEvents"
           :key="event.id"
-          class="bg-white shadow-md rounded-xl p-4 hover:shadow-xl transition"
+          class="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition group"
         >
           <img :src="event.photoUrl" alt="Event" class="w-full h-40 object-cover rounded-lg mb-3" />
           <h3 class="text-lg font-semibold">{{ event.title }}</h3>
