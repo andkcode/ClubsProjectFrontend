@@ -72,29 +72,54 @@
 </template>
 
 <script>
-import { useRoute } from "vue-router";
-import ClubsService from "../composables/ClubsService";
-import EventsService from "../composables/EventsService";
+import { useRoute } from 'vue-router';
+import ClubsService from '../composables/ClubsService';
+import EventsService from '../composables/EventsService';
 
 export default {
   data() {
     return {
       club: {},
       events: [],
+      search: '',
     };
   },
   created() {
     this.getClubById();
-    this.getEventByClubId();
+    this.getEventsByClubId();
+  },
+  computed: {
+    filteredEvents() {
+      if (!this.search) return this.events;
+      return this.events.filter(e =>
+        e.title.toLowerCase().includes(this.search.toLowerCase()) ||
+        e.description.toLowerCase().includes(this.search.toLowerCase())
+      );
+    },
+    formattedCreatedOn() {
+      return this.club.createdOn ? this.formatDate(this.club.createdOn) : '';
+    },
+    formattedUpdatedOn() {
+      return this.club.updatedOn ? this.formatDate(this.club.updatedOn) : '';
+    },
+    formattedCreatedBy() {
+      if (typeof this.club.createdBy === 'object' && this.club.createdBy !== null) {
+        return this.club.createdBy.username || 'Unknown';
+      }
+      if (typeof this.club.createdBy === 'string') {
+        const atIndex = this.club.createdBy.indexOf('@');
+        return atIndex !== -1 ? this.club.createdBy.slice(0, atIndex) : this.club.createdBy;
+      }
+      return 'Unknown';
+    },
   },
   methods: {
     async getClubById() {
       try {
         const clubId = this.$route.params.id;
-        const response = await ClubsService.getClubById(clubId);
-        this.club = response;
-      } catch (error) {
-        console.error(error);
+        this.club = await ClubsService.getClubById(clubId);
+      } catch (err) {
+        console.error(err);
       }
     }, 
     async getEventByClubId() {
