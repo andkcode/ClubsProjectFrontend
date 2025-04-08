@@ -75,10 +75,24 @@
         </div>
       </div>
 
-      <!-- Низ: кнопка + даты -->
       <div class="flex justify-between items-end">
+        <div class="flex items-center space-x-2">
         <ButtonView :link="`/clubs/${id}`" />
-        <div class="text-xs text-gray-500 text-right space-x-1">
+          <span
+            :class="[
+              'text-xs font-semibold px-2 py-1 rounded-full',
+              activityLevel === 'High'
+                ? 'bg-green-100 text-green-700'
+                : activityLevel === 'Medium'
+                ? 'bg-yellow-100 text-yellow-700'
+                : 'bg-gray-100 text-gray-600',
+            ]"
+          >
+            📊 Activity: {{ activityLevel }}
+          </span>
+        </div>
+
+        <div class="text-xs text-gray-400 text-right space-x-1">
           <span>{{ formattedCreatedOn }}</span>
           <span>/</span>
           <span>{{ formattedUpdatedOn }}</span>
