@@ -30,14 +30,21 @@
           <p>{{ formattedEndTime }}</p>
         </div>
       </div>
-      <p class="text-gray-600 text-m mb-2 font-medium">{{ type }}</p>
-      <p class="text-gray-600 text-m mb-2">{{ description }}</p>
-      <div class="flex flex-row justify-between mt-2">
-        <ButtonView :link="`/events/${id}`"/>
-        <div class="flex flex-row space-x-2 items-end">
-          <p class="text-gray-600 text-m text-end">{{ formattedCreatedOn }}</p>
-          <p class="text-black text-m text-end font-bold">/</p>
-          <p class="text-gray-600 text-m text-end">{{ formattedUpdatedOn }}</p>
+
+      <!-- Организатор и Теги -->
+      <div class="flex justify-between items-center mb-2">
+        <div class="flex items-center space-x-2">
+          <img
+            :src="organizer.avatar"
+            alt="Organizer"
+            class="w-8 h-8 rounded-full border border-gray-300"
+            title="Организатор: {{ organizer.name }}"
+          />
+          <span class="text-sm text-gray-700 font-medium">
+            {{ organizer.name }}
+          </span>
+        </div>
+
         </div>
       </div>
     </div>
