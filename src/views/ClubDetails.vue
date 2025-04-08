@@ -26,11 +26,11 @@
           </div>
         </div>
 
-        <!-- Meta info -->
-        <div class="mt-6 border-t space-y-1 pt-4 flex flex-col text-sm text-gray-500">
-          <p class="space-x-2"><i class="pi pi-user" />Created by: <span class="font-semibold text-gray-700">{{ formattedCreatedBy }}</span></p>
-          <p class="space-x-2"><i class="pi pi-calendar" />Created: <span class="font-semibold text-gray-600">{{ formattedCreatedOn }}</span></p>
-          <p class="space-x-2"><i class="pi pi-pencil" />Updated: <span class="font-semibold text-gray-500">{{ formattedUpdatedOn }}</span></p>
+        <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 mt-4">
+          <div><strong>Created by:</strong> {{ formattedCreatedBy }}</div>
+          <div><strong>Members:</strong> {{ club.members || 'N/A' }}</div>
+          <div><strong>Created:</strong> {{ formattedCreatedOn }}</div>
+          <div><strong>Last updated:</strong> {{ formattedUpdatedOn }}</div>
         </div>
 
         <!-- Actions -->
