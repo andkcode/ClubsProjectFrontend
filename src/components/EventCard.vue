@@ -156,50 +156,50 @@ function formatForCalendar(dateStr) {
 const formattedStartDate = computed(() =>
   props.startTime
     ? new Date(props.startTime).toLocaleDateString("ru-RU", {
-          day: "2-digit",
+        day: "2-digit",
         month: "short",
-          year: "numeric",
-        })
-        .replace(",", "")
+        year: "numeric",
+      })
     : "",
 );
 
 const formattedStartTime = computed(() =>
   props.startTime
-    ? new Date(props.startTime)
-        .toLocaleString("en-GB", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit",
-        })
-        .replace(",", "")
+    ? new Date(props.startTime).toLocaleTimeString("ru-RU", {
+        hour: "2-digit",
+        minute: "2-digit",
+      })
     : "",
 );
 
 const formattedEndTime = computed(() =>
   props.endTime
-    ? new Date(props.endTime)
-        .toLocaleString("en-GB", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit",
-        })
-        .replace(",", "")
+    ? new Date(props.endTime).toLocaleTimeString("ru-RU", {
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+    : "",
+);
+
+const formattedCreatedOn = computed(() =>
+  props.createdOn
+    ? new Date(props.createdOn).toLocaleString("ru-RU", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+      }).replace(",", "")
     : "",
 );
 </script>
 
-<style>
+<style scoped>
 .invisible-scrollbar {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-
 .invisible-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
 </style>
