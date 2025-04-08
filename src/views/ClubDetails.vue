@@ -1,29 +1,22 @@
 <template>
-  <div class="min-h-screen w-full bg-gray-50 py-10 px-6">
-    <div class="max-w-7xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row">
-      <!-- Club Image -->
-      <img
-        :src="club.photoUrl"
-        alt="Club photo"
-        class="lg:w-1/2 w-full object-cover h-[30rem] lg:h-auto"
-      />
-
-      <!-- Club Info -->
-      <div class="p-8 flex-1 flex flex-col justify-between">
-        <!-- Title & Location -->
-        <div>
-          <h1 class="text-5xl font-bold text-gray-900 mb-3">{{ club.title }}</h1>
-          <p class="text-gray-600 mb-4"><i class="pi pi-map-marker"></i> Location of club</p>
-
-          <!-- Tags -->
-          <div class="flex flex-wrap gap-2 mb-4">
+  <div class="min-h-screen w-full bg-gradient-to-b from-gray-50 to-white py-12 px-6">
+    <div class="max-w-7xl mx-auto rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row bg-white">
+      <div class="relative w-full lg:w-1/2 h-[32rem]">
+        <img :src="club.photoUrl" alt="Club Photo" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute top-4 left-4 bg-black/50 text-white px-4 py-1 rounded-full text-sm backdrop-blur-sm">
+          {{ club.location || 'Unknown Location' }}
+        </div>
+        <div class="absolute bottom-4 left-4 flex gap-2">
             <span
-              v-for="tag in club.tags || ['Music', 'Tech', 'Gaming']"
+            v-for="tag in club.tags || ['Music', 'Art']"
               :key="tag"
-              class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full"
+            class="bg-white/80 text-gray-800 text-xs font-semibold px-3 py-1 rounded-full"
             >
-              {{ tag }}
+            #{{ tag }}
             </span>
+        </div>
+      </div>
+
           </div>
 
           <!-- Description -->
