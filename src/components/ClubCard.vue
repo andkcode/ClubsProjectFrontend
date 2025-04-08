@@ -1,6 +1,8 @@
 <template>
-  <div class="flex flex-col w-[35rem] h-[27rem] bg-white border border-gray-200 rounded-2xl shadow-lg overflow-hidden">
-    <!-- Картинка -->
+  <div
+    class="relative flex flex-col w-[38rem] h-[32rem] bg-white border border-gray-200 rounded-3xl shadow-2xl overflow-hidden hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)] transition-all duration-300 group"
+  >
+    <div class="relative h-[16rem] w-full">
     <img
       :src="photo"
       alt="Club photo"
