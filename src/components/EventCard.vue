@@ -45,6 +45,22 @@
           </span>
         </div>
 
+        <!-- Добавить в календарь -->
+        <button
+          @click="addToCalendar"
+          class="text-xs bg-indigo-100 text-indigo-700 font-semibold px-3 py-1 rounded-full hover:bg-indigo-200 transition"
+        >
+          📆 В календарь
+        </button>
+      </div>
+
+      <!-- Описание -->
+      <div class="mb-3 flex-1 overflow-auto invisible-scrollbar max-h-[6rem]">
+        <p class="text-sm text-gray-700 whitespace-pre-wrap break-words leading-relaxed">
+          {{ description }}
+        </p>
+      </div>
+
         </div>
       </div>
     </div>
