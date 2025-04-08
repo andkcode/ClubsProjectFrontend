@@ -144,43 +144,48 @@ const props = defineProps({
   },
 });
 
+const isFavorite = ref(false);
+const toggleFavorite = () => (isFavorite.value = !isFavorite.value);
+
+const activityLevel = computed(() => {
+  if (props.members > 150 || props.events > 10) return "High";
+  if (props.members > 50 || props.events > 3) return "Medium";
+  return "Low";
+});
+
 const formattedCreatedOn = computed(() =>
   props.createdOn
-    ? new Date(props.createdOn)
-        .toLocaleString("en-GB", {
+    ? new Date(props.createdOn).toLocaleString("en-GB", {
           year: "numeric",
           month: "2-digit",
           day: "2-digit",
           hour: "2-digit",
           minute: "2-digit",
-        })
-        .replace(",", "")
-    : ""
+      }).replace(",", "")
+    : "",
 );
 
 const formattedUpdatedOn = computed(() =>
   props.updatedOn
-    ? new Date(props.updatedOn)
-        .toLocaleString("en-GB", {
+    ? new Date(props.updatedOn).toLocaleString("en-GB", {
           year: "numeric",
           month: "2-digit",
           day: "2-digit",
           hour: "2-digit",
           minute: "2-digit",
-        })
-        .replace(",", "")
-    : ""
+      }).replace(",", "")
+    : "",
 );
 
 const formattedCreatedBy = computed(() => {
   if (typeof props.createdBy === "object" && props.createdBy !== null) {
-    return props.createdBy.username || "";
+    return props.createdBy.username || "unknown";
   }
   if (typeof props.createdBy === "string") {
     const atIndex = props.createdBy.indexOf("@");
     return atIndex !== -1 ? props.createdBy.slice(0, atIndex) : props.createdBy;
   }
-  return "";
+  return "unknown";
 });
 </script>
 
