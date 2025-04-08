@@ -28,9 +28,18 @@
         <h1 class="text-2xl font-extrabold text-gray-900 leading-snug break-words max-w-[65%]">
           {{ title }}
         </h1>
-        <p class="text-sm text-gray-500 text-right font-medium truncate max-w-[40%]">
-          👤 {{ formattedCreatedBy }}
-        </p>
+        <div class="flex items-center space-x-2 max-w-[35%]">
+          <img
+            v-if="createdByAvatar"
+            :src="createdByAvatar"
+            alt="Creator avatar"
+            class="w-8 h-8 rounded-full border border-gray-300"
+            :title="`Created by: ${formattedCreatedBy}`"
+          />
+          <span class="text-sm text-gray-500 truncate font-medium">
+            {{ formattedCreatedBy }}
+          </span>
+        </div>
       </div>
 
       <!-- Теги -->
