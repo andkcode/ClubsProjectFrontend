@@ -104,7 +104,7 @@
 
 <script setup>
 import ButtonView from "./ButtonView.vue";
-import { computed } from "vue";
+import { ref, computed } from "vue";
 
 const props = defineProps({
   id: Number,
@@ -114,9 +114,33 @@ const props = defineProps({
   createdOn: String,
   updatedOn: String,
   createdBy: [String, Object],
+  createdByAvatar: {
+    type: String,
+    default: "https://i.pravatar.cc/40",
+  },
   tags: {
     type: Array,
-    default: () => ["Sample", "Tech", "Music"], // заглушки
+    default: () => ["Design", "Gaming", "Social"],
+  },
+  location: {
+    type: String,
+    default: "Unknown",
+  },
+  category: {
+    type: String,
+    default: "General",
+  },
+  roles: {
+    type: Array,
+    default: () => ["admin", "moderator", "member"],
+  },
+  members: {
+    type: Number,
+    default: 85,
+  },
+  events: {
+    type: Number,
+    default: 5,
   },
 });
 
