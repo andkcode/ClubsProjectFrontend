@@ -78,6 +78,22 @@
           </button>
         </div>
 
+        <!-- Дата создания и лайки/вью -->
+        <div class="text-xs text-gray-500 text-right flex flex-col items-end">
+          <div class="flex items-center space-x-1">
+            <span>🕓</span>
+            <span>{{ formattedCreatedOn }}</span>
+          </div>
+          <div class="flex items-center space-x-2 mt-1">
+            <div class="flex items-center space-x-1">
+              <span>👁</span>
+              <span>{{ views }}</span>
+            </div>
+            <div class="flex items-center space-x-1">
+              <span>❤️</span>
+              <span>{{ likes }}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
