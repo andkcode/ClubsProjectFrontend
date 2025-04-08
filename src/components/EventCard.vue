@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col w-[34rem] h-[27rem] bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden"
+    class="relative flex flex-col w-[36rem] h-[30rem] bg-white border border-gray-200 rounded-2xl shadow-xl overflow-hidden transition-all hover:shadow-2xl hover:scale-[1.01] duration-300"
   >
     <img :src="photo" alt="URL PHOTO LINK" class="w-full h-[17rem]" />
     <div class="overflow-auto h-full p-4 invisible-scrollbar">
