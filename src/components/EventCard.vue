@@ -2,16 +2,32 @@
   <div
     class="relative flex flex-col w-[36rem] h-[30rem] bg-white border border-gray-200 rounded-2xl shadow-xl overflow-hidden transition-all hover:shadow-2xl hover:scale-[1.01] duration-300"
   >
-    <img :src="photo" alt="URL PHOTO LINK" class="w-full h-[17rem]" />
-    <div class="overflow-auto h-full p-4 invisible-scrollbar">
-      <div class="flex flex-row justify-between items-center">
-        <h1 class="text-xl font-semibold text-gray-900 whitespace-normal">
+    <!-- Фото -->
+    <div class="relative w-full h-[16rem]">
+      <img :src="photo" alt="Event cover" class="w-full h-full object-cover" />
+      
+      <!-- Дата -->
+      <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-sm font-semibold text-gray-800 px-3 py-1 rounded-full shadow-sm">
+        📅 {{ formattedStartDate }}
+      </div>
+      
+      <!-- Популярный бейдж -->
+      <div v-if="likes > 100" class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md animate-pulse">
+        🔥 Популярный
+      </div>
+    </div>
+
+    <!-- Контент -->
+    <div class="flex flex-col justify-between h-full p-4 pt-3">
+      <!-- Заголовок + Время -->
+      <div class="flex justify-between items-start mb-2">
+        <h1 class="text-xl font-bold text-gray-900 leading-snug break-words max-w-[65%]">
           {{ title }}
         </h1>
-        <div class="flex flex-row space-x-2 self-start">
-          <p class="text-gray-600 text-m">{{ formattedStartTime }}</p>
-          <p class="text-black text-m text-end font-bold">/</p>
-          <p class="text-gray-600 text-m">{{ formattedEndTime }}</p>
+        <div class="text-right text-sm text-gray-500 space-y-1">
+          <p>{{ formattedStartTime }}</p>
+          <p>—</p>
+          <p>{{ formattedEndTime }}</p>
         </div>
       </div>
       <p class="text-gray-600 text-m mb-2 font-medium">{{ type }}</p>
