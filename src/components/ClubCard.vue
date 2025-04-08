@@ -3,8 +3,8 @@
     class="relative flex flex-col w-[38rem] h-[32rem] bg-white border border-gray-200 rounded-3xl shadow-2xl overflow-hidden hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)] transition-all duration-300 group"
   >
     <div class="relative h-[16rem] w-full">
-    <img
-      :src="photo"
+      <img
+        :src="photo"
         alt="Club cover"
         class="w-full h-full object-cover"
       />
@@ -53,7 +53,7 @@
       </div>
 
       <div class="flex-1 overflow-auto invisible-scrollbar text-sm text-gray-700 whitespace-pre-wrap break-words leading-relaxed">
-          {{ description }}
+        {{ description }}
       </div>
 
       <div class="grid grid-cols-2 gap-4 mt-1 text-xs text-gray-600">
@@ -77,7 +77,7 @@
 
       <div class="flex justify-between items-end">
         <div class="flex items-center space-x-2">
-        <ButtonView :link="`/clubs/${id}`" />
+          <ButtonView :link="`/clubs/${id}`" />
           <span
             :class="[
               'text-xs font-semibold px-2 py-1 rounded-full',
@@ -156,11 +156,11 @@ const activityLevel = computed(() => {
 const formattedCreatedOn = computed(() =>
   props.createdOn
     ? new Date(props.createdOn).toLocaleString("en-GB", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
       }).replace(",", "")
     : "",
 );
@@ -168,11 +168,11 @@ const formattedCreatedOn = computed(() =>
 const formattedUpdatedOn = computed(() =>
   props.updatedOn
     ? new Date(props.updatedOn).toLocaleString("en-GB", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
       }).replace(",", "")
     : "",
 );
@@ -187,15 +187,16 @@ const formattedCreatedBy = computed(() => {
   }
   return "unknown";
 });
+
+const formattedLocation = computed(() => props.location || "N/A");
 </script>
 
 <style scoped>
 .invisible-scrollbar {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-
 .invisible-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  display: none;
 }
 </style>
