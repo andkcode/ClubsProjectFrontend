@@ -15,9 +15,9 @@
       >
       </button>
       <div v-if="clubType.includes('Public')"
-        class="absolute bottom-3 left-3 bg-black/50 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm"
-      >
-        {{ formattedLocation }}
+        class="absolute flex flex-row bottom-3 left-3 bg-black/50 items-center space-x-1 text-white text-xs py-1 px-2 rounded-full backdrop-blur-sm"
+      ><i class="pi pi-map-marker" />
+        <p>{{ formattedLocation }}</p>
       </div>
     </div>
 
