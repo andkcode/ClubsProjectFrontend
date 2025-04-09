@@ -10,11 +10,9 @@
       />
       <button
         @click="toggleFavorite"
-        class="absolute top-3 right-3 bg-white/80 hover:bg-white text-yellow-500 rounded-full p-2 shadow-md transition"
+        :class="['absolute top-3 right-3 hover:bg-white cursor-pointer text-yellow-500 rounded-full w-[2rem] h-[2rem] shadow-md transition', isFavorite ? 'pi pi-star-fill bg-white' : 'pi pi-star bg-white/80']"
         :title="isFavorite ? 'Remove from favorites' : 'Add to favorites'"
       >
-        <span v-if="isFavorite">★</span>
-        <span v-else>☆</span>
       </button>
       <div
         class="absolute bottom-3 left-3 bg-black/50 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm"
