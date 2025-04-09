@@ -5,11 +5,19 @@
     <!-- Photo -->
     <div class="relative w-full h-[16rem]">
       <img :src="photo" alt="Event cover" class="w-full h-full object-cover" />
-      
+
+      <button
+        @click="toggleFavorite"
+        :class="['absolute top-3 right-3 hover:bg-white cursor-pointer text-yellow-500 rounded-full w-[2rem] h-[2rem] shadow-md transition', isFavorite ? 'pi pi-star-fill bg-white' : 'pi pi-star bg-white/80']"
+        :title="isFavorite ? 'Remove from favorites' : 'Add to favorites'"
+      >
+      </button>
+
       <!-- Date -->
       <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-sm font-semibold text-gray-800 px-3 py-1 rounded-full shadow-sm">
         📅 {{ formattedStartDate }}
       </div>
+      
       
       <!-- Popular Badge -->
       <div v-if="likes > 100" class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md animate-pulse">
@@ -104,6 +112,8 @@
 import ButtonView from "./ButtonView.vue";
 import { ref, computed } from "vue";
 
+const isFavorite = ref(false);
+const toggleFavorite = () => (isFavorite.value = !isFavorite.value);
 const props = defineProps({
   id: Number,
   photo: String,
