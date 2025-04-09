@@ -68,8 +68,8 @@
           <span>{{ category }}</span>
         </div>
         <div class="flex items-center space-x-2">
-          <span class="font-semibold text-gray-800">🧩 Roles:</span>
-          <span>{{ roles.join(', ') }}</span>
+          <span class="font-semibold text-gray-800">🌍 Type:</span>
+          <span>{{ clubType.join(', ') }}</span>
         </div>
       </div>
 
@@ -128,9 +128,9 @@ const props = defineProps({
     type: String,
     default: "General",
   },
-  roles: {
+  clubType: {
     type: Array,
-    default: () => ["admin", "moderator", "member"],
+    default: () => ["Public", "Online", "Hybrid"],
   },
   members: {
     type: Number,
