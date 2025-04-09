@@ -14,7 +14,7 @@
         :title="isFavorite ? 'Remove from favorites' : 'Add to favorites'"
       >
       </button>
-      <div
+      <div v-if="clubType.includes('Public')"
         class="absolute bottom-3 left-3 bg-black/50 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm"
       >
         {{ formattedLocation }}
@@ -111,6 +111,7 @@ const props = defineProps({
   description: String,
   createdOn: String,
   updatedOn: String,
+  location: String,
   createdBy: [String, Object],
   createdByAvatar: {
     type: String,
@@ -130,7 +131,7 @@ const props = defineProps({
   },
   clubType: {
     type: Array,
-    default: () => ["Public", "Online", "Hybrid"],
+    default: () => ["Public"],
   },
   members: {
     type: Number,
