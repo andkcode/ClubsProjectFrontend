@@ -14,8 +14,9 @@
       </button>
 
       <!-- Date -->
-      <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-sm font-semibold text-gray-800 px-3 py-1 rounded-full shadow-sm">
-        📅 {{ formattedStartDate }}
+      <div class="absolute top-3 left-3 flex items-center justify-center bg-white/90 backdrop-blur-sm text-sm font-semibold text-gray-800 w-[7rem] h-[2rem] rounded-full shadow-sm">
+        <i class="pi pi-calendar" />
+        <p> {{ formattedStartDate }}</p>
       </div>
       
       
