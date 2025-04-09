@@ -1,8 +1,8 @@
 <template>
   <div
-    class="relative flex flex-col w-[38rem] h-[32rem] bg-white border border-gray-200 rounded-3xl shadow-2xl overflow-hidden hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)] transition-all duration-300 group"
+    class="relative flex flex-col w-[38rem] h-[31rem] bg-white border border-gray-200 rounded-3xl shadow-2xl overflow-hidden hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)] transition-all duration-300 group"
   >
-    <div class="relative h-[16rem] w-full">
+    <div class="relative h-[17rem] w-full">
       <img
         :src="photo"
         alt="Club cover"
@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <div class="flex flex-col justify-between h-full p-4 pt-3 space-y-2">
+    <div class="flex flex-col justify-between p-4 pt-3 h-full">
       <div class="flex justify-between items-start">
         <h1 class="text-2xl font-extrabold text-gray-900 leading-snug break-words max-w-[65%]">
           {{ title }}
@@ -50,30 +50,30 @@
         </span>
       </div>
 
-      <div class="flex-1 overflow-auto invisible-scrollbar text-sm text-gray-700 whitespace-pre-wrap break-words leading-relaxed">
-        {{ description }}
-      </div>
-
-      <div class="grid grid-cols-2 gap-4 mt-1 text-xs text-gray-600">
-        <div class="flex items-center space-x-2">
-          <span class="font-semibold text-gray-800">📅 Events:</span>
+      <div class="grid grid-cols-2 gap-4 mt-2 text-[0.9rem] text-gray-600">
+        <div class="flex space-x-1">
+          <i class="pi pi-calendar text-[1.0rem]" />
+          <span class="font-semibold text-gray-800">Events:</span>
           <span>{{ events }}</span>
         </div>
-        <div class="flex items-center space-x-2">
-          <span class="font-semibold text-gray-800">👥 Members:</span>
+        <div class="flex  space-x-1">
+          <i class="pi pi-users text-[1.0rem]"/>
+          <span class="font-semibold text-gray-800">Members:</span>
           <span>{{ members }}</span>
         </div>
-        <div class="flex items-center space-x-2">
-          <span class="font-semibold text-gray-800">🏷️ Category:</span>
+        <div class="flex items-center space-x-1">
+          <i class="pi pi-tag text-[1.0rem]"/>
+          <span class="font-semibold text-gray-800">Category:</span>
           <span>{{ category }}</span>
         </div>
-        <div class="flex items-center space-x-2">
-          <span class="font-semibold text-gray-800">🌍 Type:</span>
+        <div class="flex items-center space-x-1">
+          <i class="pi pi-box text-[1.0rem]"/>
+          <span class="font-semibold text-gray-800">Type:</span>
           <span>{{ clubType.join(', ') }}</span>
         </div>
       </div>
 
-      <div class="flex justify-between items-end">
+      <div class="flex justify-between items-end pt-2">
         <div class="flex items-center space-x-2">
           <ButtonView :link="`/clubs/${id}`" />
           <span
