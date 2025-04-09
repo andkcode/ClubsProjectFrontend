@@ -13,10 +13,18 @@
       >
       </button>
 
+
       <!-- Date -->
       <div class="absolute top-3 left-3 flex items-center justify-center bg-white/90 backdrop-blur-sm text-sm font-semibold text-gray-800 w-[7rem] h-[2rem] rounded-full shadow-sm">
         <i class="pi pi-calendar" />
         <p> {{ formattedStartDate }}</p>
+      </div>
+
+      <!-- v-if="clubType.includes('Public')" -->
+      <div
+        class="absolute flex flex-row bottom-3 left-3 bg-black/50 items-center space-x-1 text-white text-xs py-1 px-2 rounded-full backdrop-blur-sm"
+      ><i class="pi pi-building" />
+        <p>{{ formattedLocationCity }}</p>
       </div>
       
       
@@ -123,6 +131,7 @@ const props = defineProps({
   startTime: String,
   endTime: String,
   type: String,
+  locationCity: String,
   createdOn: String,
   views: {
     type: Number,
@@ -203,6 +212,7 @@ const formattedCreatedOn = computed(() =>
       }).replace(",", "")
     : "",
 );
+const formattedLocationCity = computed(() => props.locationCity || "N/A");
 </script>
 
 <style scoped>
