@@ -2,24 +2,24 @@
   <div
     class="relative flex flex-col w-[36rem] h-[30rem] bg-white border border-gray-200 rounded-2xl shadow-xl overflow-hidden transition-all hover:shadow-2xl hover:scale-[1.01] duration-300"
   >
-    <!-- Фото -->
+    <!-- Photo -->
     <div class="relative w-full h-[16rem]">
       <img :src="photo" alt="Event cover" class="w-full h-full object-cover" />
       
-      <!-- Дата -->
+      <!-- Date -->
       <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-sm font-semibold text-gray-800 px-3 py-1 rounded-full shadow-sm">
         📅 {{ formattedStartDate }}
       </div>
       
-      <!-- Популярный бейдж -->
+      <!-- Popular Badge -->
       <div v-if="likes > 100" class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md animate-pulse">
-        🔥 Популярный
+        🔥 Popular
       </div>
     </div>
 
-    <!-- Контент -->
+    <!-- Content -->
     <div class="flex flex-col justify-between h-full p-4 pt-3">
-      <!-- Заголовок + Время -->
+      <!-- Title + Time -->
       <div class="flex justify-between items-start mb-2">
         <h1 class="text-xl font-bold text-gray-900 leading-snug break-words max-w-[65%]">
           {{ title }}
@@ -31,37 +31,37 @@
         </div>
       </div>
 
-      <!-- Организатор и Теги -->
+      <!-- Organizer and Tags -->
       <div class="flex justify-between items-center mb-2">
         <div class="flex items-center space-x-2">
           <img
             :src="organizer.avatar"
             alt="Organizer"
             class="w-8 h-8 rounded-full border border-gray-300"
-            title="Организатор: {{ organizer.name }}"
+            title="Organizer: {{ organizer.name }}"
           />
           <span class="text-sm text-gray-700 font-medium">
             {{ organizer.name }}
           </span>
         </div>
 
-        <!-- Добавить в календарь -->
+        <!-- Add to Calendar -->
         <button
           @click="addToCalendar"
           class="text-xs bg-indigo-100 text-indigo-700 font-semibold px-3 py-1 rounded-full hover:bg-indigo-200 transition"
         >
-          📆 В календарь
+          📆 Add to Calendar
         </button>
       </div>
 
-      <!-- Описание -->
+      <!-- Description -->
       <div class="mb-3 flex-1 overflow-auto invisible-scrollbar max-h-[6rem]">
         <p class="text-sm text-gray-700 whitespace-pre-wrap break-words leading-relaxed">
           {{ description }}
         </p>
       </div>
 
-      <!-- Кнопки -->
+      <!-- Buttons -->
       <div class="flex justify-between items-end">
         <div class="flex space-x-2">
           <ButtonView :link="`/events/${id}`" />
@@ -74,11 +74,11 @@
                 : 'bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200',
             ]"
           >
-            {{ isGoing ? '✅ Иду' : '👋 Я пойду' }}
+            {{ isGoing ? '✅ Going' : '👋 I\'m going' }}
           </button>
         </div>
 
-        <!-- Дата создания и лайки/вью -->
+        <!-- Created date, views, likes -->
         <div class="text-xs text-gray-500 text-right flex flex-col items-end">
           <div class="flex items-center space-x-1">
             <span>🕓</span>
@@ -155,7 +155,7 @@ function formatForCalendar(dateStr) {
 
 const formattedStartDate = computed(() =>
   props.startTime
-    ? new Date(props.startTime).toLocaleDateString("ru-RU", {
+    ? new Date(props.startTime).toLocaleDateString("en-US", {
         day: "2-digit",
         month: "short",
         year: "numeric",
@@ -165,7 +165,7 @@ const formattedStartDate = computed(() =>
 
 const formattedStartTime = computed(() =>
   props.startTime
-    ? new Date(props.startTime).toLocaleTimeString("ru-RU", {
+    ? new Date(props.startTime).toLocaleTimeString("en-US", {
         hour: "2-digit",
         minute: "2-digit",
       })
@@ -174,7 +174,7 @@ const formattedStartTime = computed(() =>
 
 const formattedEndTime = computed(() =>
   props.endTime
-    ? new Date(props.endTime).toLocaleTimeString("ru-RU", {
+    ? new Date(props.endTime).toLocaleTimeString("en-US", {
         hour: "2-digit",
         minute: "2-digit",
       })
@@ -183,7 +183,7 @@ const formattedEndTime = computed(() =>
 
 const formattedCreatedOn = computed(() =>
   props.createdOn
-    ? new Date(props.createdOn).toLocaleString("ru-RU", {
+    ? new Date(props.createdOn).toLocaleString("en-US", {
         year: "numeric",
         month: "2-digit",
         day: "2-digit",
