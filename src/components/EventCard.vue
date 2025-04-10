@@ -99,7 +99,7 @@
         <div class="text-xs text-gray-500 text-right flex flex-col items-end">
           <div class="flex items-center space-x-1">
             <span>🕓</span>
-            <span>{{ formattedCreatedOn }}</span>
+            <span>{{ formattedCreatedOn }} / {{ formattedUpdatedOn }}</span>
           </div>
           <div class="flex items-center space-x-2 mt-1">
             <div class="flex items-center space-x-1">
@@ -133,6 +133,7 @@ const props = defineProps({
   type: String,
   cityName: String,
   createdOn: String,
+  updatedOn: String,
   location: String,
   views: {
     type: Number,
@@ -213,6 +214,19 @@ const formattedCreatedOn = computed(() =>
       }).replace(",", "")
     : "",
 );
+
+const formattedUpdatedOn = computed(() =>
+  props.updatedOn
+    ? new Date(props.updatedOn).toLocaleString("en-GB", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+      }).replace(",", "")
+    : "",
+);
+
 </script>
 
 <style scoped>
