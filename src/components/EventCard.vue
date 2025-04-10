@@ -24,7 +24,7 @@
       <div
         class="absolute flex flex-row bottom-3 left-3 bg-black/50 items-center space-x-1 text-white text-xs py-1 px-2 rounded-full backdrop-blur-sm"
       ><i class="pi pi-building" />
-        <p>{{ formattedLocationCity }}</p>
+        <p>{{ cityName }}, {{ location }}</p>
       </div>
       
       
@@ -131,8 +131,9 @@ const props = defineProps({
   startTime: String,
   endTime: String,
   type: String,
-  locationCity: String,
+  cityName: String,
   createdOn: String,
+  location: String,
   views: {
     type: Number,
     default: 256,
@@ -212,7 +213,6 @@ const formattedCreatedOn = computed(() =>
       }).replace(",", "")
     : "",
 );
-const formattedLocationCity = computed(() => props.locationCity || "N/A");
 </script>
 
 <style scoped>

@@ -6,7 +6,7 @@
       </div>
       <div class="row gx-5">
         <div class="col-lg-6 mb-2" v-for="event in events" :key="event.id">
-          <CardEvent :id="event.id" :photo="event.photoUrl" :title="event.title" :description="event.description" :startTime="event.startTime" :endTime="event.endTime" :type="event.type" :createdOn="event.createdOn" :updatedOn="event.updatedOn" :locationCity="event.locationCity" />
+          <CardEvent :id="event.id" :photo="event.photoUrl" :title="event.title" :description="event.description" :startTime="event.startTime" :endTime="event.endTime" :type="event.type" :createdOn="event.createdOn" :updatedOn="event.updatedOn" :cityName="event.cityName" :location="event.location" />
         </div>
       </div>
     </div>
