@@ -36,17 +36,25 @@
 
     <!-- Content -->
     <div class="flex flex-col justify-between h-full p-4 pt-3">
+      <div class="flex flex-row justify-between">
       <!-- Title + Time -->
-      <div class="flex justify-between items-start mb-2">
-        <h1 class="text-xl font-bold text-gray-900 leading-snug break-words max-w-[65%]">
+      <div class="flex justify-between flex-col items-start mb-2">
+        <h1 class="text-xl font-bold text-gray-900 leading-snug break-words">
           {{ title }}
         </h1>
+        <button
+          @click="addToCalendar"
+          class="text-xs bg-indigo-100 text-indigo-700 font-semibold px-3 py-1 rounded-full hover:bg-indigo-200 transition"
+        >
+          📆 Add to Calendar
+        </button>
+        </div>
         <div class="text-right text-sm text-gray-500 space-y-1">
           <p>{{ formattedStartTime }}</p>
-          <p>—</p>
+          <p>-</p>
           <p>{{ formattedEndTime }}</p>
-        </div>
       </div>
+    </div>
 
       <!-- Organizer and Tags -->
       <div class="flex justify-between items-center mb-2">
@@ -61,21 +69,6 @@
             {{ organizer.name }}
           </span>
         </div>
-
-        <!-- Add to Calendar -->
-        <button
-          @click="addToCalendar"
-          class="text-xs bg-indigo-100 text-indigo-700 font-semibold px-3 py-1 rounded-full hover:bg-indigo-200 transition"
-        >
-          📆 Add to Calendar
-        </button>
-      </div>
-
-      <!-- Description -->
-      <div class="mb-3 flex-1 overflow-auto invisible-scrollbar max-h-[6rem]">
-        <p class="text-sm text-gray-700 whitespace-pre-wrap break-words leading-relaxed">
-          {{ description }}
-        </p>
       </div>
 
       <!-- Buttons -->
@@ -97,10 +90,6 @@
 
         <!-- Created date, views, likes -->
         <div class="text-xs text-gray-500 text-right flex flex-col items-end">
-          <div class="flex items-center space-x-1">
-            <span>🕓</span>
-            <span>{{ formattedCreatedOn }} / {{ formattedUpdatedOn }}</span>
-          </div>
           <div class="flex items-center space-x-2 mt-1">
             <div class="flex items-center space-x-1">
               <span>👁</span>
@@ -110,6 +99,10 @@
               <span>❤️</span>
               <span>{{ likes }}</span>
             </div>
+          </div>
+          <div class="flex items-center space-x-1">
+            <span>🕓</span>
+            <span>{{ formattedCreatedOn }} / {{ formattedUpdatedOn }}</span>
           </div>
         </div>
       </div>
