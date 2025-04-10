@@ -17,7 +17,7 @@
       <div v-if="clubType.includes('Public')"
         class="absolute flex flex-row bottom-3 left-3 bg-black/50 items-center space-x-1 text-white text-xs py-1 px-2 rounded-full backdrop-blur-sm"
       ><i class="pi pi-map-marker" />
-        <p>{{ formattedLocation }}</p>
+        <p>{{ countryName }}, {{ cityName }}</p>
       </div>
     </div>
 
@@ -125,6 +125,10 @@ const props = defineProps({
     type: String,
     default: "Unknown",
   },
+  countryName: {
+    type: String,
+    default: "Unknown",
+  },
   category: {
     type: String,
     default: "General",
@@ -187,7 +191,6 @@ const formattedCreatedBy = computed(() => {
   return "unknown";
 });
 
-const formattedLocation = computed(() => props.cityName || "N/A");
 </script>
 
 <style scoped>
