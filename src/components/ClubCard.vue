@@ -121,7 +121,7 @@ const props = defineProps({
     type: Array,
     default: () => ["Design", "Gaming", "Social"],
   },
-  location: {
+  cityName: {
     type: String,
     default: "Unknown",
   },
@@ -187,7 +187,7 @@ const formattedCreatedBy = computed(() => {
   return "unknown";
 });
 
-const formattedLocation = computed(() => props.location || "N/A");
+const formattedLocation = computed(() => props.cityName || "N/A");
 </script>
 
 <style scoped>
