@@ -54,7 +54,7 @@
         <div class="flex space-x-1">
           <i class="pi pi-calendar text-[1.0rem]" />
           <span class="font-semibold text-gray-800">Events:</span>
-          <span>{{ events }}</span>
+          <span>{{ formattedEvents }}</span>
         </div>
         <div class="flex  space-x-1">
           <i class="pi pi-users text-[1.0rem]"/>
@@ -101,6 +101,7 @@
 </template>
 
 <script setup>
+import { ListFormat } from "typescript";
 import ButtonView from "./ButtonView.vue";
 import { ref, computed } from "vue";
 
@@ -142,10 +143,12 @@ const props = defineProps({
     default: 85,
   },
   events: {
-    type: Number,
-    default: 5,
+    type: [Array, Number],
+    default: "Unkrown",
   },
 });
+
+console.log(props.events)
 
 const isFavorite = ref(false);
 const toggleFavorite = () => (isFavorite.value = !isFavorite.value);
@@ -189,6 +192,10 @@ const formattedCreatedBy = computed(() => {
     return atIndex !== -1 ? props.createdBy.slice(0, atIndex) : props.createdBy;
   }
   return "unknown";
+});
+
+const formattedEvents = computed(() => {
+  return Array.isArray(props.events) ?  props.events.length : props.events;
 });
 
 </script>
