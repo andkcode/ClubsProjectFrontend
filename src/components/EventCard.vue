@@ -16,10 +16,9 @@
       </button>
 
       <!-- Date -->
-      <div class="absolute top-3 left-3 flex items-center justify-center space-x-1 bg-white/90 backdrop-blur-sm text-sm font-semibold text-gray-800 w-[7rem] h-[2rem] rounded-full shadow-sm">
+      <button class="absolute outline top-3 left-3 flex items-center justify-center space-x-1 bg-white/90 backdrop-blur-sm text-sm font-semibold text-gray-800 w-[7rem] h-[2rem] rounded-full shadow-sm hover:cursor-pointer" @click="addToCalendar">
         <i class="pi pi-calendar" />
-        <p> {{ formattedStartDate }}</p>
-      </div>
+        <p> {{ formattedStartDate }}</p>    </button>
 
       <!-- Location -->
       <div
@@ -57,19 +56,37 @@
       </div>
 
       <!-- Time + Add to Calendar -->
-      <div class="flex flex-col items-start text-sm text-gray-500 mb-4">
+      <div class="flex flex-col items-start text-sm text-gray-500 mb-2">
         <div class="flex-row flex space-x-1">
           <p>{{ formattedStartTime }}</p>
           <p>-</p>
           <p>{{ formattedEndTime }}</p>
         </div>
-        <button
-          @click="addToCalendar"
-          class="text-xs bg-indigo-100 text-indigo-700 font-semibold px-3 py-1 rounded-full hover:bg-indigo-200 transition"
-        >
-          📆 Add to Calendar
-        </button>
       </div>
+
+      <div class="grid grid-cols-2 gap-4 mt-2 text-[0.9rem] mb-4 text-gray-600">
+        <div class="flex space-x-1">
+          <i class="pi pi-calendar text-[1.0rem]" />
+          <span class="font-semibold text-gray-800">Events:</span>
+          <span>asd</span>
+        </div>
+        <div class="flex  space-x-1">
+          <i class="pi pi-users text-[1.0rem]"/>
+          <span class="font-semibold text-gray-800">Members:</span>
+          <span>asd</span>
+        </div>
+        <div class="flex items-center space-x-1">
+          <i class="pi pi-tag text-[1.0rem]"/>
+          <span class="font-semibold text-gray-800">Category:</span>
+          <span>asdasd</span>
+        </div>
+        <div class="flex items-center space-x-1">
+          <i class="pi pi-box text-[1.0rem]"/>
+          <span class="font-semibold text-gray-800">Type:</span>
+          <span>asdasdsa</span>
+        </div>
+      </div>
+
 
       <!-- Buttons -->
       <div class="flex justify-between items-end mt-auto">
