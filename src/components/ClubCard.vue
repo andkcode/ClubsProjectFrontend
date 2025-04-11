@@ -42,7 +42,7 @@
 
       <div class="flex flex-wrap gap-2">
         <span
-          v-for="tag in tags"
+          v-for="tag in cleanedTags"
           :key="tag"
           class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-1 rounded-full cursor-pointer hover:bg-indigo-200 transition"
         >
@@ -69,7 +69,7 @@
         <div class="flex items-center space-x-1">
           <i class="pi pi-box text-[1.0rem]"/>
           <span class="font-semibold text-gray-800">Type:</span>
-          <span>{{ type}}</span>
+          <span>{{ type }}</span>
         </div>
       </div>
 
@@ -100,7 +100,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ListFormat } from "typescript";
 import ButtonView from "./ButtonView.vue";
 import { ref, computed } from "vue";
@@ -113,6 +113,7 @@ const props = defineProps({
   createdOn: String,
   updatedOn: String,
   location: String,
+  tags: Array,
   type: String,
   createdBy: [String, Object],
   createdByAvatar: {
@@ -121,7 +122,6 @@ const props = defineProps({
   },
   tags: {
     type: Array,
-    default: () => ["Design", "Gaming", "Social"],
   },
   cityName: {
     type: String,
@@ -197,6 +197,18 @@ const formattedCreatedBy = computed(() => {
 const formattedEvents = computed(() => {
   return Array.isArray(props.events) ?  props.events.length : props.events;
 });
+
+function normalizeTags(tags: (string | null | undefined)[]): string[] {
+  return Array.from(
+    new Set(
+      tags
+        .filter((tag): tag is string => typeof tag === "string" && tag.trim() !== "")
+        .map((tag) => tag.trim().toLowerCase())
+    )
+  );
+}
+
+const cleanedTags = computed(() => normalizeTags(props.tags));
 
 </script>
 
