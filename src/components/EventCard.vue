@@ -9,14 +9,14 @@
       <button
         @click="toggleFavorite"
         :class="['absolute top-3 right-3 hover:bg-white cursor-pointer text-yellow-500 rounded-full w-[2rem] h-[2rem] shadow-md transition', isFavorite ? 'pi pi-star-fill bg-white' : 'pi pi-star bg-white/80']"
-        :title="isFavorite ? 'Remove from favorites' : 'Add to favorites'"
+        :title="isFavorite ? 'Remove from favorites' : 'A dd to favorites'"
         role="button"
         :aria-pressed="isFavorite.toString()"
       >
       </button>
 
       <!-- Date -->
-      <div class="absolute top-3 left-3 flex items-center justify-center bg-white/90 backdrop-blur-sm text-sm font-semibold text-gray-800 w-[7rem] h-[2rem] rounded-full shadow-sm">
+      <div class="absolute top-3 left-3 flex items-center justify-center space-x-1 bg-white/90 backdrop-blur-sm text-sm font-semibold text-gray-800 w-[7rem] h-[2rem] rounded-full shadow-sm">
         <i class="pi pi-calendar" />
         <p> {{ formattedStartDate }}</p>
       </div>
