@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative flex flex-col w-[36rem] h-[30rem] bg-white border border-gray-200 rounded-2xl shadow-xl overflow-hidden transition-all hover:shadow-2xl hover:scale-[1.01] duration-300"
+    class="relative flex flex-col w-[36rem] h-[29.5rem] bg-white border border-gray-200 rounded-2xl shadow-xl overflow-hidden transition-all hover:shadow-2xl hover:scale-[1.01] duration-300"
   >
     <!-- Photo -->
     <div class="relative w-full h-[16rem]">
@@ -56,7 +56,7 @@
       </div>
 
       <!-- Time + Add to Calendar -->
-      <div class="flex flex-col items-start text-[1.0rem] text-gray-500 mb-2">
+      <div class="flex flex-col items-start text-[1.0rem] text-gray-500 mb-1">
         <div class="flex-row flex space-x-1">
           <p>{{ formattedStartTime }}</p>
           <p>-</p>
@@ -64,7 +64,7 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-2 gap-4 mt-2 text-[0.9rem] mb-4 text-gray-600">
+      <div class="grid grid-cols-2 gap-4 mt-2 text-[0.9rem] text-gray-600">
         <div class="flex space-x-1">
           <i class="pi pi-calendar text-[1.0rem]" />
           <span class="font-semibold text-gray-800">Events:</span>
