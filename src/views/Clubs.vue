@@ -6,13 +6,14 @@
       </div>
       <div class="row gx-5">
         <div class="col-lg-6 mb-2" v-for="club in clubs" :key="club.id">
-          <ClubCard :id="club.id" :photo="club.photoUrl" :title="club.title" :description="club.description" :createdOn="club.createdOn" :updatedOn="club.updatedOn" :createdBy="club.createdBy" :cityName="club.cityName" :countryName="club.countryName" :category="club.category" :events="club.events" />
+          <ClubCard :id="club.id" :photo="club.photoUrl" :title="club.title" :description="club.description" :createdOn="club.createdOn" :updatedOn="club.updatedOn" :createdBy="club.createdBy" :cityName="club.cityName" :countryName="club.countryName" :category="club.category" :events="club.events" :members="club.members" />
         </div>
       </div>
     </div>
   </template>
   
 <script>
+import { ConfirmDialogStyle } from 'primevue';
 import ClubCard from '../components/ClubCard.vue';
 import ClubsService from '../composables/ClubsService';
 
@@ -28,6 +29,7 @@ export default {
     async getAllClubs() {
       try {
         const response = await ClubsService.getAllClubs();
+        console.log(response)
         this.clubs = response;
       } catch (error) {
         console.error(error);

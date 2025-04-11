@@ -56,7 +56,7 @@
           <span class="font-semibold text-gray-800">Events:</span>
           <span>{{ formattedEvents }}</span>
         </div>
-        <div class="flex  space-x-1">
+        <div class="flex items-center space-x-1">
           <i class="pi pi-users text-[1.0rem]"/>
           <span class="font-semibold text-gray-800">Members:</span>
           <span>{{ members }}</span>
@@ -140,7 +140,7 @@ const props = defineProps({
   },
   members: {
     type: Number,
-    default: 85,
+    default: "Unknown"
   },
   events: {
     type: [Array, Number],
@@ -148,7 +148,6 @@ const props = defineProps({
   },
 });
 
-console.log(props.events)
 
 const isFavorite = ref(false);
 const toggleFavorite = () => (isFavorite.value = !isFavorite.value);
