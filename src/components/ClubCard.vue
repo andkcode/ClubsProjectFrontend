@@ -69,7 +69,7 @@
         <div class="flex items-center space-x-1">
           <i class="pi pi-box text-[1.0rem]"/>
           <span class="font-semibold text-gray-800">Type:</span>
-          <span>{{ clubType.join(', ') }}</span>
+          <span>{{ type}}</span>
         </div>
       </div>
 
@@ -113,6 +113,7 @@ const props = defineProps({
   createdOn: String,
   updatedOn: String,
   location: String,
+  type: String,
   createdBy: [String, Object],
   createdByAvatar: {
     type: String,
