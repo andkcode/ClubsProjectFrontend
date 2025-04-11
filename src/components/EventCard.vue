@@ -38,7 +38,7 @@
 
     <div class="flex flex-col h-full p-4 pt-3">
       <!-- Title + Organizer -->
-      <div class="flex justify-between items-start mb-2">
+      <div class="flex justify-between items-start">
         <h1 class="text-xl font-bold text-gray-900 leading-snug break-words">
           {{ title }}
         </h1>
@@ -56,7 +56,7 @@
       </div>
 
       <!-- Time + Add to Calendar -->
-      <div class="flex flex-col items-start text-sm text-gray-500 mb-2">
+      <div class="flex flex-col items-start text-[1.0rem] text-gray-500 mb-2">
         <div class="flex-row flex space-x-1">
           <p>{{ formattedStartTime }}</p>
           <p>-</p>
