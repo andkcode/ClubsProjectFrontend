@@ -76,6 +76,7 @@
       <div class="flex justify-between items-end pt-2">
         <div class="flex items-center space-x-2">
           <ButtonView :link="`/clubs/${id}`" />
+          <ButtonJoinClub />
           <span
             :class="[
               'text-xs font-semibold px-2 py-1 rounded-full',
@@ -103,6 +104,7 @@
 <script lang="ts" setup>
 import { ListFormat } from "typescript";
 import ButtonView from "./ButtonView.vue";
+import ButtonJoinClub from "./ButtonJoinClub.vue";
 import { ref, computed } from "vue";
 
 const props = defineProps({
@@ -154,8 +156,11 @@ const isFavorite = ref(false);
 const toggleFavorite = () => (isFavorite.value = !isFavorite.value);
 
 const activityLevel = computed(() => {
-  if (props.members > 150 || props.events > 10) return "High";
-  if (props.members > 50 || props.events > 3) return "Medium";
+  const members = typeof props.members === "number" ? props.members : 0;
+  const events = typeof props.events === "number" ? props.events : 0;
+
+  if (members == 150 || events > 10) return "High";
+  if (members > 50 || events > 3) return "Medium";
   return "Low";
 });
 
