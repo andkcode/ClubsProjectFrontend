@@ -1,12 +1,13 @@
 <template>
     <router-link :to="link">
+        <div class="group">
       <button class="relative px-6 py-2 whitespace-nowrap rounded-lg border border-gray-300 text-white font-medium text-base bg-black shadow-sm hover:shadow-md hover:border-white cursor-pointer transition-all duration-300 ease-in-out group">
-        <span class="relative z-10 flex items-center gap-2 transition-transform duration-300 group-hover:translate-x-1">Join Club
-          <svg class="w-4 h-4 text-white group-hover:text-green-600 transition-colors duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <span class="relative z-10 flex items-center gap-2 transition-transform duration-300 group-hover:translate-x-1">
+            <i class="pi pi-bolt group-hover:text-yellow-300" />Join Club
             <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
         </span>
       </button>
+      </div>
     </router-link>
 </template>
 <script setup>
