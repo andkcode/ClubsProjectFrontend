@@ -2,7 +2,7 @@
   <router-link :to="link">
     <div class="group">
       <button
-        class="relative px-6 py-2 rounded-lg border border-gray-300 text-white font-medium text-base bg-black shadow-sm border transition-none hover:shadow-md hover:border-white"
+        class="relative px-6 py-2 rounded-lg border cursor-pointer border-gray-300 text-white font-medium text-base bg-black shadow-sm border transition-none hover:shadow-md hover:border-white"
       >
         <span
           class="relative z-10 flex items-center gap-2 group-hover:translate-x-1 transition-transform duration-300"
