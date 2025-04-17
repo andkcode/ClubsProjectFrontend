@@ -24,10 +24,10 @@
           <p class="text-gray-600 italic mb-4 text-sm">“{{ club.slogan || 'A place for everyone.' }}”</p>
 
           <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-6 bg-gray-100 p-4 rounded-xl shadow-inner">
-            <div><i class="pi pi-user mr-1 text-blue-600" /><strong>Created by:</strong> {{ formattedCreatedBy }}</div>
-            <div><i class="pi pi-users mr-1 text-green-600" /><strong>Members:</strong> {{ club.members || 'N/A' }}</div>
-            <div><i class="pi pi-calendar-plus mr-1 text-purple-600" /><strong>Created:</strong> {{ formattedCreatedOn }}</div>
-            <div><i class="pi pi-refresh mr-1 text-red-600" /><strong>Updated:</strong> {{ formattedUpdatedOn }}</div>
+            <div><i class="pi pi-user mr-1" /><strong>Created by:</strong> {{ formattedCreatedBy }}</div>
+            <div><i class="pi pi-users mr-1" /><strong>Members:</strong> {{ club.members || 'N/A' }}</div>
+            <div><i class="pi pi-calendar-plus mr-1" /><strong>Created:</strong> {{ formattedCreatedOn }}</div>
+            <div><i class="pi pi-refresh mr-1" /><strong>Updated:</strong> {{ formattedUpdatedOn }}</div>
           </div>
 
           <div class="prose max-w-none text-gray-800 whitespace-pre-wrap">
