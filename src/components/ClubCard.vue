@@ -58,7 +58,7 @@
           </span>
         </div>
 
-        <div class="grid grid-cols-2 gap-4 mt-2 text-[0.9rem] text-gray-600">
+        <div class="grid grid-cols-2 gap-4 w-full mt-2 text-[0.9rem] text-gray-600">
           <div class="flex space-x-1">
             <i class="pi pi-calendar text-[1.0rem]" />
             <span class="font-semibold text-gray-800">Events:</span>
