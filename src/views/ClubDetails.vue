@@ -3,8 +3,9 @@
     <div class="max-w-7xl mx-auto rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row bg-white">
       <div class="relative w-full lg:w-1/2 h-[32rem]">
         <img :src="club.photoUrl" alt="Club Photo" class="absolute inset-0 w-full h-full object-cover" />
-        <div class="absolute top-4 left-4 bg-black/50 text-white px-4 py-1 rounded-full text-sm backdrop-blur-sm">
-          {{ club.location || 'Unknown Location' }}
+        <div class="absolute top-4 left-4 bg-black/50 text-white px-2 py-1 flex flex-row items-center space-x-1 rounded-full text-sm backdrop-blur-sm"> 
+          <i class="pi pi-map-marker" />
+        <p>{{ club.countryName }}, {{ club.cityName }}</p>
         </div>
         <div class="absolute bottom-4 left-4 flex gap-2">
           <span
@@ -80,10 +81,17 @@ import EventsService from '../composables/EventsService';
 interface Club {
   id?: string;
   title?: string;
-  slogan?: string;
   description?: string;
   location?: string;
   photoUrl?: string;
+  cityName: {
+      type: String,
+      default: "Unknown",
+    },
+    countryName: {
+      type: String,
+      default: "Unknown",
+    },
   createdBy?: string | { username?: string };
   createdOn?: string;
   updatedOn?: string;
