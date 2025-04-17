@@ -26,3 +26,13 @@
     </div>
   </router-link>
 </template>
+<script setup>
+ import { defineProps } from 'vue';
+ 
+ defineProps({
+   link: {
+     type: String,
+     required: true
+   }
+ })
+ </script>
