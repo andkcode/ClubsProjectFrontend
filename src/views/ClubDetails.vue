@@ -3,9 +3,9 @@
     <div class="max-w-7xl mx-auto rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row bg-white">
       <div class="relative w-full lg:w-1/2 h-[32rem]">
         <img :src="club.photoUrl" alt="Club Photo" class="absolute inset-0 w-full h-full object-cover" />
-        <div class="absolute top-4 left-4 bg-black/50 text-white px-2 py-1 flex flex-row items-center space-x-1 rounded-full text-sm backdrop-blur-sm"> 
+        <div class="absolute top-4 left-4 bg-black/50 text-white px-2 py-1 flex flex-row items-center space-x-1 rounded-full text-sm backdrop-blur-sm">
           <i class="pi pi-map-marker" />
-        <p>{{ club.countryName }}, {{ club.cityName }}</p>
+          <p>{{ club.countryName }}, {{ club.cityName }}</p>
         </div>
         <div class="absolute bottom-4 left-4 flex gap-2">
           <span
@@ -21,17 +21,18 @@
       <div class="p-10 flex-1 flex flex-col justify-between space-y-4">
         <div>
           <h1 class="text-4xl font-extrabold text-gray-900 mb-2">{{ club.title }}</h1>
-          <p class="text-gray-600 italic mb-6 text-sm">“{{ club.slogan || 'A place for everyone.' }}”</p>
+          <p class="text-gray-600 italic mb-4 text-sm">“{{ club.slogan || 'A place for everyone.' }}”</p>
+
+          <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-6 bg-gray-100 p-4 rounded-xl shadow-inner">
+            <div><i class="pi pi-user mr-1 text-blue-600" /><strong>Created by:</strong> {{ formattedCreatedBy }}</div>
+            <div><i class="pi pi-users mr-1 text-green-600" /><strong>Members:</strong> {{ club.members || 'N/A' }}</div>
+            <div><i class="pi pi-calendar-plus mr-1 text-purple-600" /><strong>Created:</strong> {{ formattedCreatedOn }}</div>
+            <div><i class="pi pi-refresh mr-1 text-red-600" /><strong>Updated:</strong> {{ formattedUpdatedOn }}</div>
+          </div>
+
           <div class="prose max-w-none text-gray-800 whitespace-pre-wrap">
             {{ club.description }}
           </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-4 text-sm text-gray-600 mt-4">
-          <div><strong>Created by:</strong> {{ formattedCreatedBy }}</div>
-          <div><strong>Members:</strong> {{ club.members || 'N/A' }}</div>
-          <div><strong>Created:</strong> {{ formattedCreatedOn }}</div>
-          <div><strong>Last updated:</strong> {{ formattedUpdatedOn }}</div>
         </div>
 
         <div class="flex gap-4 mt-6">
@@ -85,13 +86,13 @@ interface Club {
   location?: string;
   photoUrl?: string;
   cityName: {
-      type: String,
-      default: "Unknown",
-    },
-    countryName: {
-      type: String,
-      default: "Unknown",
-    },
+    type: String,
+    default: "Unknown",
+  },
+  countryName: {
+    type: String,
+    default: "Unknown",
+  },
   createdBy?: string | { username?: string };
   createdOn?: string;
   updatedOn?: string;
@@ -191,7 +192,6 @@ onMounted(() => {
   getEventsByClubId();
 });
 </script>
-
 
 <style scoped>
 .prose p {
