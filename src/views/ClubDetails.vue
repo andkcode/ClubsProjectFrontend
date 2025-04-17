@@ -8,7 +8,7 @@
         </div>
         <div class="absolute bottom-4 left-4 flex gap-2">
           <span
-            v-for="tag in club.tags || ['Music', 'Art']"
+            v-for="tag in cleanedTags || ['Music', 'Art']"
             :key="tag"
             class="bg-white/80 text-gray-800 text-xs font-semibold px-3 py-1 rounded-full"
           >
@@ -71,80 +71,119 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import ClubsService from '../composables/ClubsService';
 import EventsService from '../composables/EventsService';
 
-export default {
-  data() {
-    return {
-      club: {},
-      events: [],
-      search: '',
-    };
-  },
-  created() {
-    this.getClubById();
-    this.getEventsByClubId();
-  },
-  computed: {
-    filteredEvents() {
-      if (!this.search) return this.events;
-      return this.events.filter(e =>
-        e.title.toLowerCase().includes(this.search.toLowerCase()) ||
-        e.description.toLowerCase().includes(this.search.toLowerCase())
-      );
-    },
-    formattedCreatedOn() {
-      return this.club.createdOn ? this.formatDate(this.club.createdOn) : '';
-    },
-    formattedUpdatedOn() {
-      return this.club.updatedOn ? this.formatDate(this.club.updatedOn) : '';
-    },
-    formattedCreatedBy() {
-      if (typeof this.club.createdBy === 'object' && this.club.createdBy !== null) {
-        return this.club.createdBy.username || 'Unknown';
-      }
-      if (typeof this.club.createdBy === 'string') {
-        const atIndex = this.club.createdBy.indexOf('@');
-        return atIndex !== -1 ? this.club.createdBy.slice(0, atIndex) : this.club.createdBy;
-      }
-      return 'Unknown';
-    },
-  },
-  methods: {
-    async getClubById() {
-      try {
-        const clubId = this.$route.params.id;
-        this.club = await ClubsService.getClubById(clubId);
-      } catch (err) {
-        console.error(err);
-      }
-    },
-    async getEventsByClubId() {
-      try {
-        const clubId = this.$route.params.id;
-        this.events = await EventsService.getEventByClubId(clubId);
-      } catch (err) {
-        console.error(err);
-      }
-    },
-    formatDate(date) {
-      return new Date(date).toLocaleString('en-GB', {
-        year: 'numeric',
-        month: 'short',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-      });
-    },
-    truncate(text, maxLength) {
-      return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
-    },
-  },
+interface Club {
+  id?: string;
+  title?: string;
+  slogan?: string;
+  description?: string;
+  location?: string;
+  photoUrl?: string;
+  createdBy?: string | { username?: string };
+  createdOn?: string;
+  updatedOn?: string;
+  members?: number;
+  tags?: (string | null | undefined)[];
+}
+
+interface Event {
+  id: string;
+  title: string;
+  description: string;
+  photoUrl: string;
+  date: string;
+}
+
+const route = useRoute();
+const club = ref<Club>({});
+const events = ref<Event[]>([]);
+const search = ref('');
+
+const getClubById = async () => {
+  try {
+    const clubId = route.params.id as string;
+    club.value = await ClubsService.getClubById(clubId);
+  } catch (err) {
+    console.error(err);
+  }
 };
+
+const getEventsByClubId = async () => {
+  try {
+    const clubId = route.params.id as string;
+    events.value = await EventsService.getEventByClubId(clubId);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const filteredEvents = computed(() => {
+  if (!search.value) return events.value;
+  return events.value.filter(e =>
+    e.title.toLowerCase().includes(search.value.toLowerCase()) ||
+    e.description.toLowerCase().includes(search.value.toLowerCase())
+  );
+});
+
+const formatDate = (date: string) => {
+  return new Date(date).toLocaleString('en-GB', {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+};
+
+const truncate = (text: string, maxLength: number) => {
+  return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
+};
+
+const formattedCreatedOn = computed(() => {
+  return club.value.createdOn ? formatDate(club.value.createdOn) : '';
+});
+
+const formattedUpdatedOn = computed(() => {
+  return club.value.updatedOn ? formatDate(club.value.updatedOn) : '';
+});
+
+const formattedCreatedBy = computed(() => {
+  const createdBy = club.value.createdBy;
+  if (typeof createdBy === 'object' && createdBy !== null) {
+    return createdBy.username || 'Unknown';
+  }
+  if (typeof createdBy === 'string') {
+    const atIndex = createdBy.indexOf('@');
+    return atIndex !== -1 ? createdBy.slice(0, atIndex) : createdBy;
+  }
+  return 'Unknown';
+});
+
+function normalizeTags(tags: (string | null | undefined)[]): string[] {
+  return Array.from(
+    new Set(
+      tags
+        .filter((tag): tag is string => typeof tag === 'string' && tag.trim() !== '')
+        .map(tag => tag.trim().toLowerCase())
+    )
+  );
+}
+
+const cleanedTags = computed(() => {
+  return normalizeTags(club.value.tags || []);
+});
+
+onMounted(() => {
+  getClubById();
+  getEventsByClubId();
+});
 </script>
+
 
 <style scoped>
 .prose p {
