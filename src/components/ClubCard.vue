@@ -41,9 +41,6 @@
     <span class="text-xs flex flex-col text-gray-500 truncate ">
       {{ formattedCreatedOn }}
     </span>
-    <!-- <span class="text-xs flex flex-col text-gray-500 truncate ">
-     {{ formattedUpdatedOn }}
-    </span> -->
   </div>
 </div>
 </div>
