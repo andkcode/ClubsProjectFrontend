@@ -1,6 +1,5 @@
 <template>
-    <router-link :to="link">
-      <div class="group">
+      <div class="group" @click="joinClub">
         <button
           class="relative flex items-center cursor-pointer gap-3 px-6 py-2 whitespace-nowrap rounded-xl border border-gray-300 bg-black text-white text-base font-semibold shadow-md hover:shadow-xl transition-all duration-300 ease-in-out hover:border-white focus:outline-none"
         >
@@ -14,17 +13,25 @@
           ></span>
         </button>
       </div>
-    </router-link>
   </template>
   
-  <script setup>
-  import { defineProps } from 'vue';
+<script setup>
+import { ref } from 'vue'
+import ClubsService from '../composables/ClubsService' //
+
+const props = defineProps({
+  id: Number
+})
+
+const club = ref(null);
   
-  defineProps({
-    link: {
-      type: String,
-      required: true,
-    },
-  });
-  </script>
-  
+const joinClub = async () => {
+  try {
+    const response = await ClubsService.joinClub(props.id)
+    club.value = response
+    console.log("Joined club:", response)
+  } catch (error) {
+    console.error("Fetch error:", error)
+  }
+}
+</script>
