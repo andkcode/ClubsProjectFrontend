@@ -2,16 +2,21 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8080/clubs";
 const AUTH_HEADER = {
+    auth: {
+      username: "admin",
+      password: "admin",
+    },
     headers: {
       "Content-Type": "application/json",
     },
+
   };
   
 
 export default class ClubsService {
     static async getAllClubs() {
         try {
-            const response = await axios.get(API_URL, AUTH_HEADER);
+            const response = await axios.get(API_URL);
             return response.data;
         } catch (error) {
             console.error("Error fetching clubs:", error);
@@ -21,7 +26,7 @@ export default class ClubsService {
 
     static async getClubById(id: number) {
         try {
-            const response = await axios.get(`${API_URL}/${id}`, AUTH_HEADER);
+            const response = await axios.get(`${API_URL}/${id}`);
             return response.data;
         } catch (error) {
             console.error(`Error fetching club ${id}:`, error);
