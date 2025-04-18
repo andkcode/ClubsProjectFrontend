@@ -34,6 +34,16 @@ export default class ClubsService {
         }
     }
 
+    static async joinClub(id: number) {
+        try {   
+            const response = await axios.post(`${API_URL}/${id}/join`, {}, AUTH_HEADER);
+            return response.data;
+        } catch (error) {
+            console.error(`Error joining club ${id} by user`, error);
+            throw error;
+        }
+    }
+
     static async createClub(club: any) {
         try {
             const response = await axios.post(`${API_URL}/admin`, club, AUTH_HEADER);
