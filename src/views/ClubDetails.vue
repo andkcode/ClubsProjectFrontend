@@ -80,7 +80,7 @@ import ClubsService from '../composables/ClubsService';
 import EventsService from '../composables/EventsService';
 
 interface Club {
-  id?: string;
+  id?: number;
   title?: string;
   description?: string;
   location?: string;
@@ -101,7 +101,7 @@ interface Club {
 }
 
 interface Event {
-  id: string;
+  id: number;
   title: string;
   description: string;
   photoUrl: string;
