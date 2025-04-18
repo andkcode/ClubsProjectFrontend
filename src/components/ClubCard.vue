@@ -178,18 +178,6 @@
       : "",
   );
 
-  const formattedUpdatedOn = computed(() =>
-    props.updatedOn
-      ? new Date(props.updatedOn).toLocaleString("en-GB", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit",
-        }).replace(",", "")
-      : "",
-  );
-
   const formattedCreatedBy = computed(() => {
     if (typeof props.createdBy === "object" && props.createdBy !== null) {
       return props.createdBy.username || "unknown";
