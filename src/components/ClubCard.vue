@@ -81,7 +81,7 @@
         <div class="flex justify-between items-end pt-2">
           <div class="flex items-center space-x-2">
             <ButtonView :link="`/clubs/${id}`" />
-            <ButtonJoinClub />
+            <ButtonJoinClub :id="id" />
             <span
               :class="[
                 'text-xs font-semibold px-2 py-1 rounded-full',
