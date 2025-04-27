@@ -3,8 +3,8 @@
     class="min-h-screen min-w-screen flex items-center justify-center bg-cover bg-center"
   >
     <div class="backdrop-blur-lg bg-black/30 p-10 rounded-3xl shadow-2xl w-full max-w-md border border-white/20">
-      <div class="text-center mb-10">
-        <h1 class="text-5xl font-extrabold text-white tracking-wide drop-shadow-lg">ClubHub</h1>
+      <div class="items-center justify-items-center mb-10">
+        <img src="/src/assets/logo.png" alt="logo.png" class="h-[5rem]">
         <p class="text-gray-300 mt-2 tracking-wide">"Your club management companion"</p>
       </div>
       <form @submit.prevent="handleLogin" class="space-y-6">
@@ -41,10 +41,6 @@
         <p>
           Don't have an account?
           <a href="#" class="text-white hover:underline hover:text-gray-300">Join a Club</a>
-        </p>
-        <p class="mt-2">
-          Want to organize?
-          <a href="#" class="text-white hover:underline hover:text-gray-300">Create an Event</a>
         </p>
       </div>
     </div>
