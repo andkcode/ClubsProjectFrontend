@@ -12,9 +12,17 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     name: 'Home',
     component: Home,
+    beforeEnter: (to, from, next) => {
+      const isAuthenticated = localStorage.getItem('auth-token');
+      if (isAuthenticated) {
+        next();
+      } else {
+        next({ name: 'Login' });
+      }
+    },
   },
   {
-    path: '/:pathMatch(.*)*', 
+    path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import('../pages/NotFound.vue'),
   },
@@ -48,6 +56,7 @@ const routes: RouteRecordRaw[] = [
     path: '/login',
     name: 'Login',
     component: Login,
+    meta: { hideHeaderFooter: true },                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
   },
   {
     path: '/events',
@@ -63,6 +72,7 @@ const routes: RouteRecordRaw[] = [
     },
   },
 ];
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
