@@ -1,19 +1,23 @@
-<script setup lang="ts">
-import Header from '../components/layout/Header.vue';
-import Footer from '../components/layout/Footer.vue';
-</script>
-
 <template>
   <div class="flex flex-col min-h-screen w-full">
-    <Header />
+    <Header v-if="!hideHeaderFooter"/>
 
     <main class="flex-grow w-full relative">
       <router-view />
     </main>
 
-    <Footer />
+    <Footer v-if="!hideHeaderFooter"/>
   </div>
 </template>
+<script setup>
+import { useRoute } from 'vue-router';
+import Header from '../components/layout/Header.vue';
+import Footer from '../components/layout/Footer.vue';
+import { computed } from 'vue';
+
+const route = useRoute();
+const hideHeaderFooter = computed(() => route.meta.hideHeaderFooter);
+</script>
 
 <style scoped>
 @keyframes gradient-x {
