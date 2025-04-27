@@ -58,7 +58,7 @@
         <button
           type="submit"
           :disabled="isLoading"
-          class="relative w-full bg-white/10 hover:bg-white/20 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl border border-white/20 hover:border-white/40 backdrop-blur-md transition-all duration-300 overflow-hidden group"
+          class="relative w-full bg-white/10 hover:bg-white/20 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl hover:cursor-pointer border border-white/20 hover:border-white/40 backdrop-blur-md transition-all duration-300 overflow-hidden group"
         >
           <span :class="{'opacity-0': isLoading, 'opacity-100': !isLoading, 'transition-all': true, 'duration-300': true}">
             Log In
@@ -76,10 +76,10 @@
       </form>
       
       <!-- Register link with hover effect -->
-      <div class="mt-8 text-center text-sm text-gray-400">
+      <div class="mt-8 flex-col flex items-center text-sm text-gray-400">
         <p>
           Don't have an account?
-          <a href="#" class="relative text-white hover:text-gray-200 transition-all duration-300 group">
+          <a href="#" class="flex relative justify-self-center text-white hover:text-gray-200 transition-all duration-300 group">
             Join a Club
             <span class="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
           </a>
