@@ -16,13 +16,12 @@
         boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 255, 255, 0.1) inset'
       }"
     >
-      <!-- Logo and tagline with animated entry -->
-      <div class="flex flex-col items-center justify-center mb-10 transition-all duration-700">
-        <div class="h-20 w-20 mb-4 relative flex items-center justify-center">
-          <div class="absolute w-full h-full rounded-full bg-gradient-to-r from-white/5 to-white/20 animate-pulse"></div>
-          <img src="/src/assets/logo.png" alt="logo.png" class="h-20">
+     <!-- Logo and tagline with animated entry -->
+     <div class="flex flex-col items-center justify-center mb-5">
+        <div class="mb-2 flex items-center justify-center relative">
+          <div class="absolute inset-0 rounded-full soft-pulse"></div>
+          <img src="/src/assets/logo.png" alt="logo.png" class="h-20 relative z-10 filter invert brightness-200">
         </div>
-        <p class="text-gray-300 mt-2 tracking-wide">"Your club management companion"</p>
       </div>
       
       <!-- Login form with animations -->
@@ -122,6 +121,7 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('mousemove', handleMouseMove);
 });
+
 </script>
 
 <style>
@@ -129,6 +129,33 @@ body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
+}
+
+/* Custom soft pulse animation */
+@keyframes softPulse {
+  0% {
+    opacity: 0.05;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.1);
+    transform: scale(0.97);
+  }
+  50% {
+    opacity: 0.15;
+    box-shadow: 0 0 20px 4px rgba(255, 255, 255, 0.2);
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 0.05;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.1);
+    transform: scale(0.97);
+  }
+}
+
+.soft-pulse {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+  animation: softPulse 4s ease-in-out infinite;
+  border-radius: 50%;
 }
 
 /* Add subtle text shadow effect */
