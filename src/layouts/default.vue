@@ -13,10 +13,16 @@
 import { useRoute } from 'vue-router';
 import Header from '../components/layout/Header.vue';
 import Footer from '../components/layout/Footer.vue';
-import { computed } from 'vue';
+import { computed, onBeforeMount } from 'vue'
 
 const route = useRoute();
-const hideHeaderFooter = computed(() => route.meta.hideHeaderFooter);
+const hideHeaderFooter = () => {
+  return route.meta.hideHeaderFooter;
+}
+
+onBeforeMount(() => {
+  hideHeaderFooter();
+})
 </script>
 
 <style scoped>
