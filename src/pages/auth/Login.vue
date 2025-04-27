@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-screen flex items-center justify-center bg-cover bg-center"
+    class="min-h-screen min-w-screen flex items-center justify-center bg-cover bg-center"
   >
     <div class="backdrop-blur-lg bg-black/30 p-10 rounded-3xl shadow-2xl w-full max-w-md border border-white/20">
       <div class="text-center mb-10">
