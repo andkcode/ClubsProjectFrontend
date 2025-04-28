@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-col min-h-screen w-full">
-    <Header v-if="!hideHeaderFooter"/>
+  <Header v-if="!isAuthenticated ? hideHeaderFooter : !hideHeaderFooter" />
 
     <main class="flex-grow w-full relative">
       <router-view />
     </main>
 
-    <Footer v-if="!hideHeaderFooter"/>
+    <Footer v-if="!isAuthenticated ? hideHeaderFooter : !hideHeaderFooter" />
   </div>
 </template>
 <script setup>
@@ -14,8 +14,10 @@ import { useRoute } from 'vue-router';
 import Header from '../components/layout/Header.vue';
 import Footer from '../components/layout/Footer.vue';
 import { computed, onBeforeMount } from 'vue'
+import { useAuth } from '../composables/useAuth';
 
 const route = useRoute();
+const { isAuthenticated } = useAuth();
 const hideHeaderFooter = () => {
   return route.meta.hideHeaderFooter;
 }
