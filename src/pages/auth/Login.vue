@@ -84,12 +84,18 @@
           </a>
         </p>
       </div>
+      <p v-if="errorMessage" class="text-red-500 text-center mt-4">
+  {{ errorMessage }}
+</p>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import { useAuth } from '../../composables/useAuth';
+
+const { login, isAuthenticated, errorMessage } = useAuth();
 
 const email = ref('');
 const password = ref('');
@@ -103,14 +109,15 @@ const handleMouseMove = (e) => {
   mouseMovePosition.value = { x, y };
 };
 
-function handleLogin() {
+async function handleLogin() {
   isLoading.value = true;
-  
-  // Simulate API call
-  setTimeout(() => {
-    console.log('Logging in with', email.value, password.value);
-    isLoading.value = false;
-  }, 1500);
+  try {
+    await login (email.value, password.value);
+  } catch (e) {
+    console.error("Login error:", e);
+  } finally {
+    isLoading.value = false;  
+  }
 }
 
 // Clean up event listeners when component unmounts
