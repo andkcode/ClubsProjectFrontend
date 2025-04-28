@@ -7,7 +7,7 @@ const AUTH_HEADER = {
       password: "admin",
     },
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "multipart/form-data",
     },
 
   };
@@ -36,7 +36,7 @@ export default class ClubsService {
 
     static async joinClub(id: number) {
         try {   
-            const response = await axios.post(`${API_URL}/${id}/join`, {}, AUTH_HEADER);
+            const response = await axios.post(`${API_URL}/${id}/join`, {});
             return response.data;
         } catch (error) {
             console.error(`Error joining club ${id} by user`, error);
