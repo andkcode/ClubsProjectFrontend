@@ -8,20 +8,22 @@ interface AuthResponse {
 
 export function useAuth() {
     const isAuthenticated = ref<boolean>(false);
-    const username = ref<string>('');
+    const email = ref<string>('');
     const password = ref<string>('');
     const errorMessage = ref<string>('');
     const router = useRouter();
 
-const login = async (user: string, pass: string): Promise<void> => {
+const login = async (em: string, pass: string): Promise<void> => {
     try {
         const response = await axios.post<AuthResponse>('http://localhost:8080/auth/login', {
-            username: user,
+            email: em,
             password: pass,
     });
         if(response.status === 200) {
             isAuthenticated.value = true;
-            username.value = user;
+            email.value = em;
+            localStorage.setItem('auth-token', response.data.message);
+            router.push({ name: 'Home' });
         } else {
             errorMessage.value = 'Invalid credentials'
         }
@@ -32,7 +34,7 @@ const login = async (user: string, pass: string): Promise<void> => {
 
     const logout = (): void => {
         isAuthenticated.value = false;
-        username.value = '';
+        email.value = '';
         password.value = '';
     };
 
@@ -40,7 +42,7 @@ const login = async (user: string, pass: string): Promise<void> => {
         isAuthenticated,
         login,
         logout,
-        username,
+        email,
         password,
         errorMessage
     };
