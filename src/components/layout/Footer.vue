@@ -1,5 +1,5 @@
 <template>
-    <footer class="relative flex items-center justify-center min-w-screen h-20 overflow-hidden border-t-2">
+    <footer class="relative flex items-center justify-center min-w-screen h-20 overflow-hidden">
       <div class="absolute inset-0 bg-gray-100"></div>
       
       <div class="absolute inset-0 bg-white"></div>

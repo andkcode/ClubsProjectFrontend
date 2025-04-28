@@ -41,8 +41,7 @@
 
     <!-- Sign-Out Button -->
     <button
-      class="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-300 text-black hover:bg-gradient-to-r hover:from-pink-400 hover:to-purple-500 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
-      title="Sign Out"
+      class="flex items-center justify-center w-10 h-10 rounded-full text-black hover:bg-black hover:text-white cursor-pointer transition-all duration-500"
     >
       <i class="pi pi-sign-out text-[1.4rem]"></i>
     </button>
