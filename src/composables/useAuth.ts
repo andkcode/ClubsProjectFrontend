@@ -38,11 +38,17 @@ const login = async (em: string, pass: string): Promise<void> => {
         password.value = '';
     };
 
+    const refreshAuth = (): void => {
+        const token = localStorage.getItem('auth-token');
+        isAuthenticated.value = !!token;
+    }
+
     return {
         isAuthenticated,
         login,
         logout,
         email,
+        refreshAuth,
         password,
         errorMessage
     };
