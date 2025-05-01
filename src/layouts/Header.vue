@@ -33,16 +33,15 @@
             Events
             <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
           </span>
+          <UserMenu />
         </router-link>
-        <a href="#" class="nav-link group">
-          <i class="pi pi-user text-[1.5rem] text-black group-hover:text-orange-400 transition-colors duration-300"></i>
-        </a>
       </nav>
-      <v-icon icon="mdi-home" />
     </div>
   </div>
 </template>
-
+<script>
+import UserMenu from '../components/UserMenu.vue';
+</script>
 
 <style scoped>
 @keyframes gradient-x {
