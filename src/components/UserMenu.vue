@@ -1,7 +1,7 @@
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger>
-            <button><i class="pi pi-user text-[1.5rem] text-black group-hover:text-orange-400 transition-colors duration-300"></i></button>
+            <button><i class="pi pi-user text-[1.5rem] hover:cursor-pointer text-black group-hover:text-orange-400 transition-colors duration-300"></i></button>
     </DropdownMenuTrigger>
     <DropdownMenuContent class="w-56 z-50">
       <DropdownMenuLabel>My Account</DropdownMenuLabel>
