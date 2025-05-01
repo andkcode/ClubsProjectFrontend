@@ -9,7 +9,7 @@
       <DropdownMenuItem>Profile</DropdownMenuItem>
       <DropdownMenuItem>Billing</DropdownMenuItem>
       <DropdownMenuItem>Team</DropdownMenuItem>
-      <DropdownMenuItem>Subscription</DropdownMenuItem>
+      <DropdownMenuItem>Log Out</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
 </template>
