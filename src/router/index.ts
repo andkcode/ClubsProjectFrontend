@@ -12,14 +12,6 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     name: 'Home',
     component: Home,
-    beforeEnter: (to, from, next) => {
-      const isAuthenticated = localStorage.getItem('auth-token');
-      if (isAuthenticated) {
-        next();
-      } else {
-        next({ name: 'Login' });
-      }
-    },
   },
   {
     path: '/:pathMatch(.*)*',
