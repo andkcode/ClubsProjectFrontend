@@ -16,13 +16,13 @@
     <!-- Right part -->
     <div class="relative flex items-center w-full max-w-fit space-x-6">
       <nav class="hidden md:flex flex-grow space-x-8">
-        <router-link class="nav-link group" :to="`/`">
+        <router-link class="nav-link group" @click="open" :to="`/`">
           <span class="relative text-black group-hover:text-pink-500 transition-colors duration-300">
             Home
             <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
           </span>
         </router-link>
-        <router-link class="nav-link group" :to="`/clubs`">
+        <router-link class="nav-link group" :to="`/`">
           <span class="relative text-black group-hover:text-purple-400 transition-colors duration-300">
             Clubs
             <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
@@ -43,6 +43,13 @@
 </template>
 <script setup>
 import UserMenu from '../components/UserMenu.vue';
+import { useAuth } from '../composables/useAuth';
+
+const { isAuthenticated } = useAuth();
+
+const open = () => {
+  console.log(isAuthenticated.value);
+}
 </script>
 
 <style scoped>
