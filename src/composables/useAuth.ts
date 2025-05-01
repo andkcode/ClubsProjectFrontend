@@ -22,8 +22,7 @@ const login = async (em: string, pass: string): Promise<void> => {
         if(response.status === 200) {
             isAuthenticated.value = true;
             email.value = em;
-            localStorage.setItem('auth-token', response.data.message);
-            router.push({ name: 'Home' });
+            password.value = pass;
         } else {
             errorMessage.value = 'Invalid credentials'
         }
@@ -33,9 +32,11 @@ const login = async (em: string, pass: string): Promise<void> => {
 };
 
     const logout = (): void => {
+        localStorage.removeItem('auth-token');
         isAuthenticated.value = false;
         email.value = '';
         password.value = '';
+        router.push('/login');
     };
 
     const refreshAuth = (): void => {
