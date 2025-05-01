@@ -9,7 +9,7 @@
       <DropdownMenuItem>Profile</DropdownMenuItem>
       <DropdownMenuItem>Billing</DropdownMenuItem>
       <DropdownMenuItem>Team</DropdownMenuItem>
-      <DropdownMenuItem>Log Out</DropdownMenuItem>
+      <DropdownMenuItem @click="logOut">Log Out</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
 </template>
@@ -23,4 +23,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { useAuth } from '../composables/useAuth';
+import router from '../router';
+
+const auth = useAuth();
+
+const logOut = () => {
+  auth.logout();
+}
+
 </script>
