@@ -6,87 +6,67 @@
       backgroundImage: 'radial-gradient(circle at 50% 50%, #333 0%, #111 50%, #000 100%)'
     }"
   >
-
-    
-    <!-- Login card with glass effect -->
     <div 
-      class="backdrop-blur-lg bg-black/30 p-10 rounded-3xl shadow-2xl w-full max-w-md border border-white/20 transition-all duration-500 hover:border-white/40"
+      class="backdrop-blur-lg bg-black/30 p-10 rounded-3xl shadow-2xl w-full max-w-md border border-white/20 transition-all duration-500"
       :style="{
         transform: `perspective(1000px) rotateX(${mouseMovePosition.y * 0.05}deg) rotateY(${-mouseMovePosition.x * 0.05}deg)`,
         boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 255, 255, 0.1) inset'
       }"
     >
-     <!-- Logo and tagline with animated entry -->
-     <div class="flex flex-col items-center justify-center mb-5">
-        <div class="mb-2 flex items-center justify-center relative">
+      <!-- Logo -->
+      <div class="flex flex-col items-center mb-5">
+        <div class="relative">
           <div class="absolute inset-0 rounded-full soft-pulse"></div>
-          <img src="/src/assets/logo.png" alt="logo.png" class="h-20 relative z-10 filter invert brightness-200">
+          <img src="/src/assets/logo.png" alt="Logo" class="h-20 relative z-10 filter invert brightness-200">
         </div>
       </div>
-      
-      <!-- Login form with animations -->
+
+      <!-- Login Form -->
       <form @submit.prevent="handleLogin" class="space-y-6">
-        <div class="group">
+        <div>
           <label class="block text-sm text-gray-300 mb-1" for="email">Email</label>
-          <div class="relative">
-            <input
-              v-model="email"
-              type="email"
-              id="email"
-              required
-              class="w-full px-4 py-3 rounded-xl bg-white/5 text-white placeholder-gray-500 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all duration-300 border border-white/10 focus:border-white/30"
-              placeholder="you@example.com"
-            />
-          </div>
+          <input
+            v-model="email"
+            type="email"
+            id="email"
+            required
+            class="w-full px-4 py-3 rounded-xl bg-white/5 text-white placeholder-gray-500 focus:ring-2 focus:ring-white/30 border border-white/10"
+            placeholder="you@example.com"
+          />
         </div>
-        
-        <div class="group">
+
+        <div>
           <label class="block text-sm text-gray-300 mb-1" for="password">Password</label>
-          <div class="relative">
-            <input
-              v-model="password"
-              type="password"
-              id="password"
-              required
-              class="w-full px-4 py-3 rounded-xl bg-white/5 text-white placeholder-gray-500 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all duration-300 border border-white/10 focus:border-white/30"
-              placeholder="••••••••"
-            />
-          </div>
+          <input
+            v-model="password"
+            type="password"
+            id="password"
+            required
+            class="w-full px-4 py-3 rounded-xl bg-white/5 text-white placeholder-gray-500 focus:ring-2 focus:ring-white/30 border border-white/10"
+            placeholder="••••••••"
+          />
         </div>
-        
+
         <button
           type="submit"
           :disabled="isLoading"
-          class="relative w-full bg-white/10 hover:bg-white/20 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl hover:cursor-pointer border border-white/20 hover:border-white/40 backdrop-blur-md transition-all duration-300 overflow-hidden group"
+          class="relative w-full bg-white/10 hover:bg-white/20 text-white font-semibold py-3 rounded-xl border border-white/20 backdrop-blur-md"
         >
-          <span :class="{'opacity-0': isLoading, 'opacity-100': !isLoading, 'transition-all': true, 'duration-300': true}">
-            Log In
-          </span>
-          
-          <span v-if="isLoading" class="absolute inset-0 flex items-center justify-center">
-            <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          <span v-if="!isLoading">Log In</span>
+          <span v-else class="absolute inset-0 flex items-center justify-center">
+            <svg class="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24" fill="none">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+              <path class="opacity-75" fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4zm2 5.3A8 8 0 014 12H0c0 3 1.1 5.8 3 7.9l3-2.6z" />
             </svg>
           </span>
-          
-          <div class="absolute inset-0 w-0 bg-white/20 transition-all duration-500 ease-out group-hover:w-full"></div>
         </button>
       </form>
-      
-      <!-- Register link with hover effect -->
-      <div class="mt-8 flex-col flex items-center text-sm text-gray-400">
-        <p>
-          Don't have an account?
-          <a href="#" class="flex relative justify-self-center text-white hover:text-gray-200 transition-all duration-300 group">
-            Join a Club
-            <span class="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
-          </a>
-        </p>
-      </div>
+
+      <!-- Error Message -->
       <p v-if="errorMessage" class="text-red-500 text-center mt-4">
-  {{ errorMessage }}
-</p>
+        {{ errorMessage }}
+      </p>
     </div>
   </div>
 </template>
@@ -94,33 +74,26 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useAuth } from '../../composables/useAuth';
+import { useRouter } from 'vue-router';
 
-const { login, isAuthenticated, errorMessage } = useAuth();
-
-const email = ref('');
-const password = ref('');
+const router = useRouter();
+const { login, email, password, errorMessage } = useAuth();
 const isLoading = ref(false);
+
+const handleLogin = async () => {
+  isLoading.value = true;
+  await login(email.value, password.value, router);
+  isLoading.value = false;
+};
+
 const mouseMovePosition = ref({ x: 0, y: 0 });
 
 const handleMouseMove = (e) => {
-  const { clientX, clientY } = e;
-  const x = (clientX / window.innerWidth) * 20 - 10;
-  const y = (clientY / window.innerHeight) * 20 - 10;
+  const x = (e.clientX / window.innerWidth) * 20 - 10;
+  const y = (e.clientY / window.innerHeight) * 20 - 10;
   mouseMovePosition.value = { x, y };
 };
 
-async function handleLogin() {
-  isLoading.value = true;
-  try {
-    await login (email.value, password.value);
-  } catch (e) {
-    console.error("Login error:", e);
-  } finally {
-    isLoading.value = false;  
-  }
-}
-
-// Clean up event listeners when component unmounts
 onMounted(() => {
   window.addEventListener('mousemove', handleMouseMove);
 });
@@ -128,64 +101,25 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('mousemove', handleMouseMove);
 });
-
 </script>
 
 <style>
-body {
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-/* Custom soft pulse animation */
-@keyframes softPulse {
-  0% {
-    opacity: 0.05;
-    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.1);
-    transform: scale(0.97);
-  }
-  50% {
-    opacity: 0.15;
-    box-shadow: 0 0 20px 4px rgba(255, 255, 255, 0.2);
-    transform: scale(1.03);
-  }
-  100% {
-    opacity: 0.05;
-    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.1);
-    transform: scale(0.97);
-  }
-}
-
 .soft-pulse {
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
   animation: softPulse 4s ease-in-out infinite;
   border-radius: 50%;
 }
 
-/* Add subtle text shadow effect */
-input, button, label, p, a {
-  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+@keyframes softPulse {
+  0%, 100% {
+    opacity: 0.05;
+    transform: scale(0.97);
+  }
+  50% {
+    opacity: 0.15;
+    transform: scale(1.03);
+  }
 }
-
-/* Focus styles */
-input:focus {
-  box-shadow: 0 0 0 2px rgba(255,255,255,0.2), 0 0 20px rgba(255,255,255,0.1);
-}
-
-/* Animation for form elements */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-form > div {
-  animation: fadeIn 0.5s ease-out forwards;
-}
-
-form > div:nth-child(1) { animation-delay: 0.1s; }
-form > div:nth-child(2) { animation-delay: 0.2s; }
-form > button { animation-delay: 0.3s; }
 </style>
