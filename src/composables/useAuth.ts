@@ -38,7 +38,7 @@ const login = async (em: string, pass: string, router: any): Promise<void> => {
         isAuthenticated.value = false;
         email.value = '';
         password.value = '';
-                router.push('/login');
+        router.push('/login');
     };
 
     const refreshAuth = (): void => {
