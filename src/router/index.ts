@@ -1,48 +1,37 @@
 import { createRouter, createWebHistory } from 'vue-router';
-
 import type { RouteRecordRaw } from 'vue-router';
+
 const ClubDetails = () => import('../views/ClubDetails.vue');
 const Home = () => import('../views/Home.vue');
 const Clubs = () => import('../views/Clubs.vue');
 const Events = () => import('../views/Events.vue');
 const Login = () => import('../pages/auth/Login.vue');
+const NotFound = () => import('../pages/NotFound.vue');
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home',
     component: Home,
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    name: 'NotFound',
-    component: () => import('../pages/NotFound.vue'),
+    meta: { requiresAuth: true },
   },
   {
     path: '/clubs',
     name: 'Clubs',
     component: Clubs,
-    beforeEnter: (to, from, next) => {
-      const isAuthenticated = localStorage.getItem('auth-token');
-      if (isAuthenticated) {
-        next();
-      } else {
-        next({ name: 'Login' });
-      }
-    },
+    meta: { requiresAuth: true },
   },
   {
     path: '/clubs/:id',
     name: 'ClubDetails',
     component: ClubDetails,
-    beforeEnter: (to, from, next) => {
-      const isAuthenticated = localStorage.getItem('auth-token');
-      if (isAuthenticated) {
-        next();
-      } else {
-        next({ name: 'Login' });
-      }
-    },
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/events',
+    name: 'Events',
+    component: Events,
+    meta: { requiresAuth: true },
   },
   {
     path: '/login',
@@ -51,24 +40,25 @@ const routes: RouteRecordRaw[] = [
     meta: { hideHeaderFooter: true },                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
   },
   {
-    path: '/events',
-    name: 'Events',
-    component: Events,
-    beforeEnter: (to, from, next) => {
-      const isAuthenticated = localStorage.getItem('auth-token');
-      if (isAuthenticated) {
-        next();
-      } else {
-        next({ name: 'Login' });
-      }
-    },
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFound,
   },
 ];
-
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('auth-token');
+
+  if (to.meta.requiresAuth && !token) {
+    next({ name: 'Login' });
+  } else {
+    next();
+  }
 });
 
 export default router;
