@@ -6,7 +6,7 @@
     <DropdownMenuContent class="w-56 z-50">
       <DropdownMenuLabel>My Account</DropdownMenuLabel>
       <DropdownMenuSeparator />
-      <DropdownMenuItem>Profile</DropdownMenuItem>
+      <DropdownMenuItem @click="profileAuthenticated">Profile</DropdownMenuItem>
       <DropdownMenuItem>My Clubs</DropdownMenuItem>
       <DropdownMenuItem>My Events</DropdownMenuItem>
       <DropdownMenuItem>Notifications</DropdownMenuItem>
@@ -29,11 +29,24 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { useAuth } from '../composables/useAuth';
 import router from '../router';
+import { computed, onBeforeMount } from 'vue'
 
 const auth = useAuth();
+const { isAuthenticated } = auth;
+
+console.log(isAuthenticated.value)
 
 const logOut = () => {
   auth.logout();
 }
+
+const profileAuthenticated = () => {
+  if(isAuthenticated.value == false) {
+    return router.push('/login');
+  } else {
+    return console.log('pisya')
+  }
+}
+
 
 </script>
