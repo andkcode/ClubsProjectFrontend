@@ -11,8 +11,8 @@
 </template>
 <script setup>
 import { useRoute } from 'vue-router';
-import Header from '../components/layout/Header.vue';
-import Footer from '../components/layout/Footer.vue';
+import Header from './Header.vue';
+import Footer from './Footer.vue';
 import { computed, onBeforeMount } from 'vue'
 import { useAuth } from '../composables/useAuth';
 import { watch } from 'vue';
