@@ -7,8 +7,12 @@
       <DropdownMenuLabel>My Account</DropdownMenuLabel>
       <DropdownMenuSeparator />
       <DropdownMenuItem>Profile</DropdownMenuItem>
-      <DropdownMenuItem>Billing</DropdownMenuItem>
-      <DropdownMenuItem>Team</DropdownMenuItem>
+      <DropdownMenuItem>My Clubs</DropdownMenuItem>
+      <DropdownMenuItem>My Events</DropdownMenuItem>
+      <DropdownMenuItem>Notifications</DropdownMenuItem>
+      <DropdownMenuItem>Settings</DropdownMenuItem>
+      <DropdownMenuItem>Support / Help / FAQ</DropdownMenuItem>
+      <!-- <DropdownMenuItem>Subscriptions></DropdownMenuItem> -->
       <DropdownMenuItem @click="logOut">Log Out</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
