@@ -23,6 +23,8 @@ const login = async (em: string, pass: string): Promise<void> => {
             isAuthenticated.value = true;
             email.value = em;
             password.value = pass;
+            router.push('/')
+            localStorage.setItem('auth-token', response.data.message);
         } else {
             errorMessage.value = 'Invalid credentials'
         }
