@@ -51,7 +51,6 @@ const getAllClubs = async () => {
   }
 };
 
-onMounted(() => {
   refreshAuth();
 
   if (!isAuthenticated.value) {
@@ -59,5 +58,4 @@ onMounted(() => {
   } else {
     getAllClubs();
   }
-});
 </script>

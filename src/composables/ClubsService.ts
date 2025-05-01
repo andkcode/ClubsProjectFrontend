@@ -2,10 +2,6 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8080/clubs";
 const AUTH_HEADER = {
-    auth: {
-      username: "admin",
-      password: "admin",
-    },
     headers: {
       "Content-Type": "multipart/form-data",
     },
