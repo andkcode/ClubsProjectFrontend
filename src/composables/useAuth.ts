@@ -6,11 +6,12 @@ interface AuthResponse {
     message:string;
 }
 
+const isAuthenticated = ref<boolean>(false);
+const email = ref<string>('');
+const password = ref<string>('');
+const errorMessage = ref<string>('');
+
 export function useAuth() {
-    const isAuthenticated = ref<boolean>(false);
-    const email = ref<string>('');
-    const password = ref<string>('');
-    const errorMessage = ref<string>('');
     const router = useRouter();
 
 const login = async (em: string, pass: string): Promise<void> => {
@@ -23,12 +24,12 @@ const login = async (em: string, pass: string): Promise<void> => {
             isAuthenticated.value = true;
             email.value = em;
             password.value = pass;
-            router.push('/')
             localStorage.setItem('auth-token', response.data.message);
+            router.push('/')
         } else {
             errorMessage.value = 'Invalid credentials'
         }
-    }   catch(error:any) {
+    }   catch(error: any) {
         errorMessage.value = 'Authentication failed: ' + (error.response?.data?.message || 'Unknown error');
     }
 };
