@@ -15,7 +15,6 @@
         </div>
   
         <div class="mt-12">
-          <img src="/assets/astronaut_clubhub.svg" alt="Lost in space" class="w-64 mx-auto opacity-80 animate-float" />
         </div>
       </div>
     </div>

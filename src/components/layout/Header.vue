@@ -38,6 +38,7 @@
           <i class="pi pi-user text-[1.5rem] text-black group-hover:text-orange-400 transition-colors duration-300"></i>
         </a>
       </nav>
+      <v-icon icon="mdi-home" />
     </div>
   </div>
 </template>
