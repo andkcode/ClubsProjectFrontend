@@ -27,6 +27,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+
 import { useAuth } from '../composables/useAuth';
 import router from '../router';
 import { computed, onBeforeMount } from 'vue'
@@ -34,17 +35,13 @@ import { computed, onBeforeMount } from 'vue'
 const auth = useAuth();
 const { isAuthenticated } = auth;
 
-console.log(isAuthenticated.value)
-
 const logOut = () => {
-  auth.logout();
+  auth.logout(router);
 }
 
 const profileAuthenticated = () => {
   if(isAuthenticated.value == false) {
     return router.push('/login');
-  } else {
-    return console.log('pisya')
   }
 }
 

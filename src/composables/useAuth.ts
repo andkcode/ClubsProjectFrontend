@@ -12,9 +12,8 @@ const password = ref<string>('');
 const errorMessage = ref<string>('');
 
 export function useAuth() {
-    const router = useRouter();
 
-const login = async (em: string, pass: string): Promise<void> => {
+const login = async (em: string, pass: string, router: any): Promise<void> => {
     try {
         const response = await axios.post<AuthResponse>('http://localhost:8080/auth/login', {
             email: em,
@@ -25,7 +24,7 @@ const login = async (em: string, pass: string): Promise<void> => {
             email.value = em;
             password.value = pass;
             localStorage.setItem('auth-token', response.data.message);
-            router.push('/')
+            router.push('/');
         } else {
             errorMessage.value = 'Invalid credentials'
         }
@@ -34,12 +33,12 @@ const login = async (em: string, pass: string): Promise<void> => {
     }
 };
 
-    const logout = (): void => {
+    const logout = (router: any): void => {
         localStorage.removeItem('auth-token');
         isAuthenticated.value = false;
         email.value = '';
         password.value = '';
-        router.push('/login');
+                router.push('/login');
     };
 
     const refreshAuth = (): void => {
