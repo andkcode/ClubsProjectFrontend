@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useAuth } from "./useAuth";
 
 const API_URL = "http://localhost:8080/clubs";
 const AUTH_HEADER = {
@@ -7,7 +8,6 @@ const AUTH_HEADER = {
     },
 
   };
-  
 
 export default class ClubsService {
     static async getAllClubs() {

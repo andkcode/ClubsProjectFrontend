@@ -1,6 +1,5 @@
 import { ref } from 'vue';
 import axios from 'axios';
-import { useRouter } from 'vue-router';
 
 interface AuthResponse {
     message:string;
@@ -10,8 +9,6 @@ const isAuthenticated = ref<boolean>(false);
 const email = ref<string>('');
 const password = ref<string>('');
 const errorMessage = ref<string>('');
-
-export function useAuth() {
 
 const login = async (em: string, pass: string, router: any): Promise<void> => {
     try {
@@ -46,13 +43,14 @@ const login = async (em: string, pass: string, router: any): Promise<void> => {
         isAuthenticated.value = !!token;
     }
 
-    return {
-        isAuthenticated,
-        login,
-        logout,
-        email,
-        refreshAuth,
-        password,
-        errorMessage
-    };
-}
+    export function useAuth() {
+        return {
+          isAuthenticated,
+          login,
+          logout,
+          email,
+          password,
+          refreshAuth,
+          errorMessage,
+        };
+      }
