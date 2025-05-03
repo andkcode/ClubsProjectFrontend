@@ -6,14 +6,14 @@
     <DropdownMenuContent class="w-56 z-50">
       <DropdownMenuLabel>My Account</DropdownMenuLabel>
       <DropdownMenuSeparator />
-      <DropdownMenuItem @click="profileAuthenticated">Profile</DropdownMenuItem>
-      <DropdownMenuItem>My Clubs</DropdownMenuItem>
-      <DropdownMenuItem>My Events</DropdownMenuItem>
-      <DropdownMenuItem>Notifications</DropdownMenuItem>
-      <DropdownMenuItem>Settings</DropdownMenuItem>
-      <DropdownMenuItem>Support / Help / FAQ</DropdownMenuItem>
-      <!-- <DropdownMenuItem>Subscriptions></DropdownMenuItem> -->
-      <DropdownMenuItem @click="logOut">Log Out</DropdownMenuItem>
+      <DropdownMenuItem @click="profileAuthenticated" class="hover:cursor-pointer">Profile</DropdownMenuItem>
+      <DropdownMenuItem class="hover:cursor-pointer">My Clubs</DropdownMenuItem>
+      <DropdownMenuItem class="hover:cursor-pointer">My Events</DropdownMenuItem>
+      <DropdownMenuItem class="hover:cursor-pointer">Notifications</DropdownMenuItem>
+      <DropdownMenuItem class="hover:cursor-pointer">Settings</DropdownMenuItem>
+      <DropdownMenuItem class="hover:cursor-pointer">Support / Help / FAQ</DropdownMenuItem>
+      <DropdownMenuItem class="hover:cursor-pointer">Subscriptions></DropdownMenuItem>
+      <DropdownMenuItem @click="logOut" class="hover:cursor-pointer">Log Out</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
 </template>
