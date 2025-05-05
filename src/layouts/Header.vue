@@ -1,14 +1,22 @@
 <template>
-  <div class="z-10 min-w-screen px-6 max-w-7xl mx-auto min-h-[6rem] flex items-center justify-between bg-black/90 backdrop-blur-md border-b border-white/10">
+<div class="z-10 min-w-screen px-6 max-w-7xl mx-auto min-h-[6rem] flex items-center justify-between 
+  bg-white/90 dark:bg-black/90
+  backdrop-blur-md border-b border-black/10 dark:border-white/10 
+  transition-colors duration-300">
     <div class="flex items-center space-x-6 w-full">
       <router-link class="hover:cursor-pointer" :to="`/`">
-        <img src="/src/assets/logo.png" alt="logo.png" class="w-[100%] h-[5rem] filter invert brightness-200" />
+        <img src="/src/assets/logo.png" alt="logo.png" 
+        class="w-[100%] h-[5rem] dark:invert dark:brightness-200 transition-all duration-300" />
       </router-link>
 
       <!-- Search Bar -->
       <div class="relative flex items-center w-full max-w-xl h-[2.5rem] px-4 rounded-full bg-white/5 border border-white/20 shadow-lg backdrop-blur-md transition-all duration-300 hover:shadow-xl focus-within:border-white/40">
         <i class="pi pi-search text-[1.3rem] text-gray-400"></i>
-        <input type="text" placeholder="Search" class="ml-3 flex-1 bg-transparent text-white placeholder-gray-500 focus:outline-none" />
+        <input type="text" placeholder="Search" 
+  class="ml-3 flex-1 bg-transparent 
+         text-black dark:text-white 
+         placeholder-gray-400 dark:placeholder-gray-500 
+         focus:outline-none" />
       </div>
     </div>
 
@@ -16,25 +24,25 @@
     <div class="relative flex items-center w-full max-w-fit space-x-6">
       <nav class="hidden md:flex flex-grow space-x-8">
         <router-link class="nav-link group" :to="`/`">
-          <span class="relative text-gray-300 group-hover:text-white transition-colors duration-300">
+          <span class="relative text-gray-700 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors duration-300">
             Home
             <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
           </span>
         </router-link>
         <router-link class="nav-link group" :to="`/clubs`">
-          <span class="relative text-gray-300 group-hover:text-white transition-colors duration-300">
+          <span class="relative text-gray-700 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors duration-300">
             Clubs
             <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
           </span>
         </router-link>
         <router-link class="nav-link group" :to="`/events`">
-          <span class="relative text-gray-300 group-hover:text-white transition-colors duration-300">
+          <span class="relative text-gray-700 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors duration-300">
             Events
-            <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
           </span>
         </router-link>
         <div>
           <UserMenu />
+          <ThemeButton />
         </div>
       </nav>
     </div>
@@ -52,6 +60,7 @@
   </div>
 </template>
 <script setup>
+import ThemeButton from '../components/ThemeButton.vue';
 import UserMenu from '../components/UserMenu.vue';
 import { useAuth } from '../composables/useAuth';
 
