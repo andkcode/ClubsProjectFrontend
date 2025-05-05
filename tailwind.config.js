@@ -1,16 +1,22 @@
 module.exports = {
-  darkMode: 'class', 
+  darkMode: 'class',
   content: [
-    "./index.html",
-    "./src/**/*.{vue,js,ts}",
-    "./node_modules/shadcn-vue/**/*.{vue,js,ts}",
+    './index.html',
+    './src/**/*.{html,js,ts,jsx,tsx}',
+    './node_modules/shadcn-vue/**/*.{vue,js,ts}',
+    './src/components/**/*.{vue,js,ts}',
+    './src/styles/**/*.{css,scss}'       
   ],
   theme: {
-    extend: {      
+    extend: {
       colors: {
-      'warning': 'hsl(var(--warning))',
-      'warning-foreground': 'hsl(var(--warning-foreground))',
-    },},
+        warning: 'hsl(var(--warning))',
+        'warning-foreground': 'hsl(var(--warning-foreground))',
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss'),
+    require('autoprefixer'),
+  ],
 };
