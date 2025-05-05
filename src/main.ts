@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import "./style.css";
+import "./assets/style.css";
 import App from "../src/App.vue";
 import axios from 'axios';
 import router from './router';
@@ -15,3 +15,4 @@ axios.interceptors.response.use(
 );
 
 createApp(App).use(router).mount("#app");
+
