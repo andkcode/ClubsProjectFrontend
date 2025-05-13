@@ -1,20 +1,13 @@
 <template>
-  <footer class="relative flex items-center justify-center min-w-screen h-20 overflow-hidden  bg-[hsl(var(--background))] backdrop-blur-md border-t border-white/10">
+  <footer class="relative flex items-center justify-center min-w-screen h-20 overflow-hidden bg-[hsl(var(--background))]">
 
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-    </div>
-    
     <!-- Content -->
     <div class="relative z-10 w-full px-6 max-w-7xl mx-auto flex justify-between items-center">
       <div class="text-gray-400 text-sm">
         © 2025 ClubHub. All rights reserved.
       </div>
       
-      <div class="hidden md:flex space-x-8">
+      <div class="md:flex space-x-8">
         <a href="#" class="nav-link group">
           <span class="relative text-gray-400 group-hover:text-white transition-colors duration-300">
             Privacy Policy
@@ -36,8 +29,7 @@
       </div>
     </div>
     
-    <!-- Top line glow effect -->
-    <div class="absolute top-0 left-0 h-px w-full animate-shine bg-gradient-to-r from-transparent via-white/60 to-transparent"></div>
+
   </footer>
 </template>
   
