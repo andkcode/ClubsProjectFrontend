@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   darkMode: 'class',
   content: [
     './index.html',
@@ -18,5 +18,6 @@ module.exports = {
   plugins: [
     require('tailwindcss'),
     require('autoprefixer'),
+    require('tailwindcss-animate'),
   ],
 };
