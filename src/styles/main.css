@@ -5,7 +5,6 @@
 @import 'primeicons/primeicons.css';
 @import "tw-animate-css";
 
-@layer base {
   :root {
     /* Base Colors */
     --background: 0 0% 100%;
@@ -75,4 +74,3 @@
 
     --radius: 0.5rem;
   }
-}
