@@ -1,5 +1,5 @@
 <template>
-  <footer class="relative flex items-center justify-center min-w-screen h-20 overflow-hidden bg-black/90 backdrop-blur-md border-t border-white/10">
+  <footer class="relative flex items-center justify-center min-w-screen h-20 overflow-hidden bg-white dark:bg-neutral-900 backdrop-blur-md border-t border-white/10">
 
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
       <div class="particle"></div>

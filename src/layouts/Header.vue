@@ -1,6 +1,6 @@
 <template>
 <div class="z-10 min-w-screen px-6 max-w-7xl mx-auto min-h-[6rem] flex items-center justify-between 
-  bg-[hsl(var(--background))]
+  bg-white dark:bg-neutral-900
   backdrop-blur-md border-b border-black/10 dark:border-white/10 
   transition-colors duration-300">
     <div class="flex items-center space-x-6 w-full">
