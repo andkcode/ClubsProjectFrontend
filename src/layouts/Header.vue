@@ -47,8 +47,7 @@
       <div class="particle"></div>
     </div>
 
-    <!-- Top line glow effect -->
-    <div class="absolute bottom-0 left-0 h-px w-full animate-shine bg-gradient-to-r from-transparent via-[hsl(var(--foreground))]/60 to-transparent"></div>
+
   </div>
 </template>
 <script setup>
