@@ -1,5 +1,5 @@
 <template>
-  <div class="z-10 min-w-screen px-6 max-w-7xl mx-auto min-h-[6rem] flex items-center justify-between bg-[hsl(var(--background))] text-[hsl(var(--foreground))] backdrop-blur-md border-b transition-colors duration-300">
+  <div class="z-10 min-w-screen px-6 max-w-7xl mx-auto min-h-[6rem] flex items-center justify-between bg-[hsl(var(--background))] text-[hsl(var(--foreground))] transition-colors duration-300">
     <div class="flex items-center">
       <router-link class="hover:cursor-pointer" :to="`/`">
         <img src="/src/assets/logo.png" alt="logo.png" 
