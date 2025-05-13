@@ -39,13 +39,6 @@
           <ThemeButton />
     </div>
 
-    <!-- Subtle animated particles -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-    </div>
 
 
   </div>
