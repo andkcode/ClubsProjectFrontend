@@ -26,12 +26,13 @@
         <router-link class="nav-link group" :to="`/clubs`">
           <span class="relative text-[hsl(var(--foreground))] group-hover:text-[hsl(var(--foreground))] transition-colors duration-300">
             Clubs
-            <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
+            <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300"/>
           </span>
         </router-link>
         <router-link class="nav-link group" :to="`/events`">
           <span class="relative text-[hsl(var(--foreground))] group-hover:text-[hsl(var(--foreground))] transition-colors duration-300">
             Events
+            <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300"/>
           </span>
         </router-link>
       </nav>

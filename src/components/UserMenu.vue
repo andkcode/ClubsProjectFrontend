@@ -1,11 +1,13 @@
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger>
-            <button><i class="pi pi-user text-[1.5rem] hover:cursor-pointer text-[hsl(var(--foreground))] group-hover:text-orange-400 transition-colors duration-300"></i></button>
-    </DropdownMenuTrigger>
-    <DropdownMenuContent class="w-56 z-50">
+  <button class="relative group flex items-center hover: cursor-pointer">
+    <i class="pi pi-user text-[1.5rem] text-[hsl(var(--foreground))] transition-colors duration-300 hover:text-gray-400" />
+  </button>
+</DropdownMenuTrigger>
+    <DropdownMenuContent class="text-[hsl(var(--foreground))]">
       <DropdownMenuLabel>My Account</DropdownMenuLabel>
-      <DropdownMenuSeparator />
+      <DropdownMenuSeparator class="bg-[hsl(var(--muted-foreground))]"/>
       <DropdownMenuItem @click="profileAuthenticated" class="hover:cursor-pointer">Profile</DropdownMenuItem>
       <DropdownMenuItem class="hover:cursor-pointer">My Clubs</DropdownMenuItem>
       <DropdownMenuItem class="hover:cursor-pointer">My Events</DropdownMenuItem>
