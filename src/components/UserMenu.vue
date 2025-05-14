@@ -1,8 +1,8 @@
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger>
-  <button class="relative group flex items-center hover: cursor-pointer">
-    <i class="pi pi-user text-[1.5rem] text-[hsl(var(--foreground))] transition-colors duration-300 hover:text-gray-400" />
+  <button class="relative group flex items-center hover:cursor-pointer">
+    <i class="pi pi-user text-[1.3rem] text-[hsl(var(--foreground))] transition-colors duration-300 hover:text-gray-400" />
   </button>
 </DropdownMenuTrigger>
     <DropdownMenuContent class="text-[hsl(var(--muted-foreground))]">

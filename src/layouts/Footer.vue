@@ -9,19 +9,19 @@
       
       <div class="md:flex space-x-8">
         <a href="#" class="nav-link group">
-          <span class="relative text-[hsl(var(--foreground))] group-hover:text-white transition-colors duration-300">
+          <span class="relative text-[hsl(var(--foreground))] transition-colors duration-300">
             Privacy Policy
             <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
           </span>
         </a>
         <a href="#" class="nav-link group">
-          <span class="relative text-[hsl(var(--foreground))] group-hover:text-white transition-colors duration-300">
+          <span class="relative text-[hsl(var(--foreground))] transition-colors duration-300">
             Terms of Service
             <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
           </span>
         </a>
         <a href="#" class="nav-link group">
-          <span class="relative text-[hsl(var(--foreground))] group-hover:text-white transition-colors duration-300">
+          <span class="relative text-[hsl(var(--foreground))] transition-colors duration-300">
             Contact Us
             <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
           </span>
