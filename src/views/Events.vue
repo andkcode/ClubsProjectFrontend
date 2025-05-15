@@ -12,31 +12,36 @@
     </div>
   </template>
   
-<script>
+<script setup lang="ts">
 import CardEvent from '../components/EventCard.vue';
 import EventsService from '../composables/EventsService';
+import { useRouter } from 'vue-router';
+import { useAuth } from '../composables/useAuth';
+import { ref } from 'vue';
 
-export default {
-  name: 'Events',
-  components: { CardEvent },
-  data() {
-    return {
-      events: [],
-    };
-  },
-  methods: {
-    async getAllEvents() {
-      try {
-        const response = await EventsService.getAllEvents();
-        this.events = response;
-      } catch (error) {
-        console.error(error);
-      }
-    },
-  },
-  created() {
-    this.getAllEvents();
-  },
+const router = useRouter();
+const { isAuthenticated, refreshAuth, logout } = useAuth();
+
+const events = ref([]);
+
+const getAllEvents = async () => {
+  try {
+    const response = await EventsService.getAllEvents();
+    events.value = response;
+  } catch (error: any) {
+    console.error(error);
+    if (error.response?.status === 401) {
+      logout(router);
+    }
+  }
 };
 
+  refreshAuth();
+
+  if (!isAuthenticated.value) {
+    router.push('/login');
+  } else {
+    getAllEvents();
+  }
+  
   </script>
