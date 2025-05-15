@@ -65,14 +65,9 @@
       </div>
 
       <div class="grid grid-cols-2 gap-4 mt-2 text-[0.9rem] text-gray-600">
-        <div class="flex space-x-1">
-          <i class="pi pi-calendar text-[1.0rem]" />
-          <span class="font-semibold text-gray-800">Events:</span>
-          <span>asd</span>
-        </div>
         <div class="flex  space-x-1">
           <i class="pi pi-users text-[1.0rem]"/>
-          <span class="font-semibold text-gray-800">Members:</span>
+          <span class="font-semibold text-gray-800">Joined:</span>
           <span>asd</span>
         </div>
         <div class="flex items-center space-x-1">
