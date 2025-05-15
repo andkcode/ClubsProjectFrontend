@@ -127,11 +127,9 @@ const props = defineProps({
   },
   cityName: {
     type: String,
-    default: "Unknown",
   },
   countryName: {
     type: String,
-    default: "Unknown",
   },
   category: {
     type: String,
@@ -145,7 +143,7 @@ const props = defineProps({
     type: Number,
   },
   events: {
-    type: [Array],
+    type: Array,
     default: () => [],
   },
 });
@@ -204,7 +202,9 @@ function normalizeTags(tags: (string | null | undefined)[] | undefined): string[
   );
 }
 
-const cleanedTags = computed(() => normalizeTags(props.tags));
+const cleanedTags = computed(() => {
+  return normalizeTags(props.tags);
+});
 
 </script>
 
