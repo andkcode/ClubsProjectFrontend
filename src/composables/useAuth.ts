@@ -62,7 +62,6 @@ const logout = (router: any): void => {
 const refreshAuth = (): void => {
     const token = localStorage.getItem('auth-token');
     isAuthenticated.value = !!token;
-    console.log("Auth refreshed, token exists:", !!token);
 };
 
 const getAuthHeader = (contentType = 'application/json') => {
