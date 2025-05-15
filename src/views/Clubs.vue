@@ -58,4 +58,5 @@ const getAllClubs = async () => {
   } else {
     getAllClubs();
   }
+  
 </script>
