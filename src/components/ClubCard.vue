@@ -143,11 +143,10 @@ const props = defineProps({
   },
   members: {
     type: Number,
-    default: "Unknown"
   },
   events: {
-    type: [Array, Number],
-    default: "Unknown",
+    type: [Array],
+    default: () => [],
   },
 });
 
