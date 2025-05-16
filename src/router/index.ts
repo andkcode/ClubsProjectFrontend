@@ -6,6 +6,7 @@ const Home = () => import('../views/Home.vue');
 const Clubs = () => import('../views/Clubs.vue');
 const Events = () => import('../views/Events.vue');
 const Login = () => import('../pages/auth/Login.vue');
+const Register = () => import('../pages/auth/Register.vue');
 const NotFound = () => import('../pages/NotFound.vue');
 
 const routes: RouteRecordRaw[] = [
@@ -38,6 +39,12 @@ const routes: RouteRecordRaw[] = [
     name: 'Login',
     component: Login,
     meta: { hideHeaderFooter: true },                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+  },
+  {
+  path: '/register',
+  name: 'Register',
+  component: Register,
+  meta: { hideHeaderFooter: true }, 
   },
   {
     path: '/:pathMatch(.*)*',
