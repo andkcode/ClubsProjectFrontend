@@ -1,5 +1,5 @@
 <template>
-  <div class="relative group" @click="joinClub">
+  <div class="relative group" @click="joinClub" v-if="!isJoined">
     <button
       class="relative flex items-center justify-center rounded-lg px-6 py-2 bg-[hsl(var(--background))] text-[hsl(var(--foreground))] font-medium shadow-lg hover:shadow-sm transition-all duration-300 overflow-hidden hover:cursor-pointer border-[hsl(var(--muted-foreground))] border-1"
     >
@@ -37,7 +37,7 @@
 </template>
   
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import ClubsService from '../composables/ClubsService'
 
 const props = defineProps({
@@ -45,6 +45,17 @@ const props = defineProps({
 })
 
 const club = ref(null);
+const isJoined = ref(false);
+
+onMounted(async () => {
+  try {
+    const response = await ClubsService.checkMembership(props.id)
+    isJoined.value = response
+    console.log("Joined:", response)
+  } catch (error) {
+    console.error("Fetch error:", error)
+  }
+})
   
 const joinClub = async () => {
   try {

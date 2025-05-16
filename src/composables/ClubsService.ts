@@ -35,6 +35,16 @@ export default class ClubsService {
     }
   }
 
+  static async checkMembership(id: number) {
+    try {
+      const response = await axios.get(`${API_URL}/${id}/membership`, getAuthHeader());
+      return response.data;
+    } catch (error) {
+      console.error(`Error checking membership for club ${id}`, error);
+      throw error;
+    }
+  }
+
   static async createClub(club: any, isMultipart = false) {
     try {
       const contentType = isMultipart ? 'multipart/form-data' : 'application/json';
