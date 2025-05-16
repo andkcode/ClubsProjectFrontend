@@ -7,8 +7,7 @@ const { getAuthHeader } = useAuth();
 export default class ClubsService {
   static async getAllClubs() {
     try {
-      const headers = getAuthHeader();
-      const response = await axios.get(API_URL, headers);
+      const response = await axios.get(API_URL, getAuthHeader());
       return response.data;
     } catch (error) {
       console.error("Error fetching clubs:", error);
