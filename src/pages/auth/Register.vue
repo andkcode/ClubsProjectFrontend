@@ -24,14 +24,14 @@
         <!-- Register Form -->
         <form @submit.prevent="handleRegister" class="space-y-6">
           <div>
-            <label class="block text-sm text-gray-300 mb-1" for="name">Full Name</label>
+            <label class="block text-sm text-gray-300 mb-1" for="username">Username</label>
             <input
-              v-model="name"
+              v-model="username"
               type="text"
-              id="name"
+              id="username"
               required
               class="w-full px-4 py-3 rounded-xl bg-white/5 text-white placeholder-gray-500 focus:ring-2 focus:ring-white/30 border border-white/10"
-              placeholder="John Doe"
+              placeholder="ClubUser"
             />
           </div>
   
@@ -74,7 +74,7 @@
           <button
             type="submit"
             :disabled="isLoading"
-            class="relative w-full bg-white/10 hover:bg-white/20 text-white font-semibold py-3 rounded-xl border border-white/20 backdrop-blur-md"
+            class="relative w-full hover:cursor-pointer bg-white/10 hover:bg-white/20 text-white font-semibold py-3 rounded-xl border border-white/20 backdrop-blur-md"
           >
             <span v-if="!isLoading">Register</span>
             <span v-else class="absolute inset-0 flex items-center justify-center">
@@ -93,9 +93,9 @@
         </p>
   
         <!-- Login Link -->
-        <div class="text-center mt-6 text-gray-400">
+        <div class="text-center mt-6 flex items-center justify-center gap-2 text-gray-400">
           Already have an account? 
-          <router-link to="/login" class="text-white hover:underline">Login</router-link>
+          <router-link to="/login" class="text-white font-bold hover:underline">Login</router-link>
         </div>
       </div>
     </div>
@@ -107,11 +107,9 @@
   import { useRouter } from 'vue-router';
   
   const router = useRouter();
-  const { register, errorMessage } = useAuth();
+  const { register, username, email, password, errorMessage } = useAuth();
   const isLoading = ref(false);
-  const name = ref('');
-  const email = ref('');
-  const password = ref('');
+  
   const confirmPassword = ref('');
   
   const handleRegister = async () => {
@@ -121,7 +119,7 @@
     }
     
     isLoading.value = true;
-    await register(name.value, email.value, password.value, router);
+    await register(email.value, password.value, username.value, router);
     isLoading.value = false;
   };
   
