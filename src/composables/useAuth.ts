@@ -8,6 +8,7 @@ interface AuthResponse {
 const isAuthenticated = ref<boolean>(false);
 const email = ref<string>('');
 const password = ref<string>('');
+const username = ref<string>('');
 const errorMessage = ref<string>('');
 
 const initAuth = (): void => {
@@ -50,6 +51,33 @@ const login = async (em: string, pass: string, router: any): Promise<void> => {
     }
 };
 
+const register = async (em: string, pass: string, us: string, router: any): Promise<void> => {
+    try {
+        const response = await axios.post<AuthResponse>('http://localhost:8080/auth/register', {
+            email: em,
+            password: pass,
+            username: us,
+        });
+        
+        if (response.status === 200 && response.data.token) {
+            isAuthenticated.value = true;
+            email.value = em;
+            username.value = us;
+            password.value = ''; 
+            
+            localStorage.setItem('auth-token', response.data.token);
+            console.log("Registration successful, token stored");
+            
+            router.push('/');
+        } else {
+            errorMessage.value = 'Invalid credentials';
+        }
+    } catch (error: any) {
+        console.error("Registration error:", error);
+        errorMessage.value = 'Registration failed: ' + (error.response?.data?.message || 'Unknown error');
+    }
+};
+
 const logout = (router: any): void => {
     localStorage.removeItem('auth-token');
     isAuthenticated.value = false;
@@ -85,7 +113,9 @@ export function useAuth() {
     return {
         isAuthenticated,
         login,
+        register,
         logout,
+        username,
         email,
         password,
         refreshAuth,
