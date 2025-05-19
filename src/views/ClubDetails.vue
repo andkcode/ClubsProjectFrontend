@@ -37,9 +37,6 @@
 
         <div class="flex gap-4 mt-6">
           <button class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Join</button>
-          <button class="px-5 py-2 bg-yellow-400 text-black rounded-lg hover:bg-yellow-500 transition">Edit</button>
-          <button class="px-5 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">Delete</button>
-          <button class="px-5 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">Create Event</button>
         </div>
       </div>
     </div>
