@@ -1,4 +1,7 @@
 <template>
+<p class="text-left font-medium text-md text-[hsl(var(--foreground))]" v-if="isJoined">
+  You are the member of this club!
+</p>
   <div class="relative group" @click="joinClub" v-if="!isJoined">
     <button
       class="relative flex items-center justify-center rounded-lg px-6 py-2 bg-[hsl(var(--background))] text-[hsl(var(--foreground))] font-medium shadow-lg hover:shadow-sm transition-all duration-300 overflow-hidden hover:cursor-pointer border-[hsl(var(--muted-foreground))] border-1"
