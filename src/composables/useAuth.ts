@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 import axios from 'axios';
-
+import { toast } from 'vue-sonner'
 interface AuthResponse {
     token: string;
 }
@@ -43,11 +43,11 @@ const login = async (em: string, pass: string, router: any): Promise<void> => {
             
             router.push('/');
         } else {
-            errorMessage.value = 'Invalid credentials';
+            toast.error('Invalid credentials');
         }
     } catch (error: any) {
         console.error("Login error:", error);
-        errorMessage.value = 'Authentication failed: ' + (error.response?.data?.message || 'Unknown error');
+        toast.error('Invalid credentials');
     }
 };
 
