@@ -39,28 +39,45 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import ClubsService from '../composables/ClubsService'
+import { watch } from 'vue';
 
 const props = defineProps({
   id: Number
 })
 
 const club = ref(null);
-const isJoined = ref(false);
+const isJoined = ref(false); 
+const loading = ref(false); 
 
-onMounted(async () => {
+const checkMembership = async () => {
+  loading.value = true
   try {
-    const response = await ClubsService.checkMembership(props.id)
-    isJoined.value = response
-    console.log("Joined:", response)
+      const response = await ClubsService.checkMembership(props.id)
+      isJoined.value = response.isJoined;
+      console.log("Membership status:", isJoined.value)
   } catch (error) {
-    console.error("Fetch error:", error)
+    console.error("Membership check error:", error)
+    isJoined.value = false  
+  } finally {
+    loading.value = false
   }
+}
+
+onMounted(() => {
+  checkMembership()
+})
+
+watch(() => props.id, (newValue) => {
+  checkMembership()
 })
   
 const joinClub = async () => {
+  if(isJoined.value) return
+  
   try {
     const response = await ClubsService.joinClub(props.id)
     club.value = response
+    isJoined.value = true;
     console.log("Joined club:", response)
   } catch (error) {
     console.error("Fetch error:", error)
