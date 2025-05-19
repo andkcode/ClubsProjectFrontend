@@ -79,8 +79,7 @@
         </div>
       </div>
 
-      <div class="flex justify-between items-end pt-2">
-        <div class="flex items-center space-x-2">
+        <div class="flex justify-between items-center space-x-2">
           <ButtonJoinClub :id="id" @click.stop />
           <span
             :class="[
@@ -97,7 +96,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script lang="ts" setup>
