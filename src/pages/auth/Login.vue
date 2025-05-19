@@ -45,7 +45,7 @@
             class="w-full px-4 py-3 rounded-xl bg-white/5 text-white placeholder-gray-500 focus:ring-2 focus:ring-white/30 border border-white/10"
             placeholder="••••••••"
           />
-          <p class="inline-block text-start mt-2 ml-1 text-sm text-[hsl(var(--muted-foreground))] hover:cursor-pointer hover:text-[hsl(var(--foreground))] duration-300 transition-colors">Forgot password?</p>
+          <p class="inline-block text-start mt-2 ml-1 text-sm text-[hsl(var(--muted-foreground))] hover:cursor-pointer hover:text-white duration-300 transition-colors">Forgot password?</p>
         </div>
 
         <button
@@ -70,7 +70,7 @@
       </p>
 
       <div class="flex justify-center mt-4">
-  <router-link to="/register" class="inline-block text-sm text-[hsl(var(--muted-foreground))] hover:cursor-pointer hover:text-[hsl(var(--foreground))] transition-colors duration-300">Don't you have an account?</router-link>
+  <router-link to="/register" class="inline-block text-sm text-[hsl(var(--muted-foreground))] hover:cursor-pointer hover:text-white transition-colors duration-300">Don't you have an account?</router-link>
 </div>
     </div>
   </div>
