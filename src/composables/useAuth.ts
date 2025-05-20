@@ -98,6 +98,7 @@ const register = async (em: string, pass: string, us: string, router: any): Prom
             toast('Registration successful', {
                 duration: 1000,
                 position: 'bottom-right', 
+                type: "success"
               })
               
               setTimeout(() => {
