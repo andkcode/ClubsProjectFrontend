@@ -18,6 +18,14 @@ const initAuth = (): void => {
         (error) => {
             if (error.response && error.response.status === 401) {
                 console.log("401 Unauthorized detected, clearing token");
+
+                toast('401 Unauthorized detected', {
+                    description: 'Clearing token',
+                    duration: 2000,
+                    type: 'error',
+                    position: 'top-right', 
+                  })
+
                 isAuthenticated.value = false;
                 localStorage.removeItem('auth-token');
             }
@@ -40,14 +48,33 @@ const login = async (em: string, pass: string, router: any): Promise<void> => {
             
             localStorage.setItem('auth-token', response.data.token);
             console.log("Login successful, token stored");
-            
-            router.push('/');
+
+            toast('Login successful', {
+                duration: 1000,
+                type: 'success',
+                position: 'bottom-right', 
+              })
+
+            setTimeout(() => {
+                router.push('/');
+            }, 1100);
+
         } else {
-            toast.error('Invalid credentials');
+            toast('Invalid credentials', {
+                duration: 2000,
+                type: 'error',
+                position: 'top-right', 
+              })
         }
     } catch (error: any) {
         console.error("Login error:", error);
-        toast.error('Invalid credentials');
+
+        toast('Login error', {
+            description: 'Incorrect email or password',
+            duration: 2500,
+            type: 'error',
+            position: 'top-right', 
+          })
     }
 };
 
@@ -67,14 +94,33 @@ const register = async (em: string, pass: string, us: string, router: any): Prom
             
             localStorage.setItem('auth-token', response.data.token);
             console.log("Registration successful, token stored");
-            
-            router.push('/');
+
+            toast('Registration successful', {
+                duration: 1000,
+                position: 'bottom-right', 
+              })
+              
+              setTimeout(() => {
+                router.push('/');
+            }, 1100);
+
         } else {
-            errorMessage.value = 'Invalid credentials';
+            toast('Invalid credentials', {
+                duration: 2500,
+                position: 'top-right',
+                type: 'error',
+              })
         }
     } catch (error: any) {
         console.error("Registration error:", error);
+
         errorMessage.value = 'Registration failed: ' + (error.response?.data?.message || 'Unknown error');
+
+        toast('Registration failed:', {
+            duration: 2500,
+            position: 'top-right',
+            type: 'error',
+          })
     }
 };
 
@@ -84,6 +130,14 @@ const logout = (router: any): void => {
     email.value = '';
     password.value = '';
     console.log("User logged out, token removed");
+
+    toast('User logged out', {
+        description: 'You have been logged out',
+        duration: 2500,
+        position: 'top-left', 
+        type: 'info',
+      })
+
     router.push('/login');
 };
 
@@ -96,6 +150,14 @@ const getAuthHeader = (contentType = 'application/json') => {
     const token = localStorage.getItem('auth-token');
     if (!token) {
         console.warn("No auth token found in localStorage");
+
+        toast('Token Error', {
+            description: 'No auth token found in localStorage',
+            duration: 2500,
+            position: 'top-right', 
+            type: 'error',
+          })
+          
         return {};
     }
     
