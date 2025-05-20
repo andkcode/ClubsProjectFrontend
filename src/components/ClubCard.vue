@@ -129,8 +129,8 @@ const props = defineProps({
     type: String,
   },
   category: {
-    type: String,
-    default: "General",
+    type: Array,
+    default: () => [],
   },
   clubType: {
     type: Array,
