@@ -8,6 +8,7 @@ const Events = () => import('../views/Events.vue');
 const Login = () => import('../pages/auth/Login.vue');
 const Register = () => import('../pages/auth/Register.vue');
 const NotFound = () => import('../pages/NotFound.vue');
+const ResetPassword = () => import('../pages/auth/ResetPassword.vue');
 
 const routes: RouteRecordRaw[] = [
   {
@@ -45,6 +46,12 @@ const routes: RouteRecordRaw[] = [
   name: 'Register',
   component: Register,
   meta: { hideHeaderFooter: true }, 
+  },
+  {
+    path: '/reset-password',
+    name: 'ResetPassword',
+    component: ResetPassword,
+    meta: { hideHeaderFooter: true }, 
   },
   {
     path: '/:pathMatch(.*)*',
