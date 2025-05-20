@@ -9,6 +9,7 @@ const Login = () => import('../pages/auth/Login.vue');
 const Register = () => import('../pages/auth/Register.vue');
 const NotFound = () => import('../pages/NotFound.vue');
 const ResetPassword = () => import('../pages/auth/ResetPassword.vue');
+const ForgotPassword = () => import('../pages/auth/ForgotPassword.vue');
 
 const routes: RouteRecordRaw[] = [
   {
@@ -52,6 +53,12 @@ const routes: RouteRecordRaw[] = [
     name: 'ResetPassword',
     component: ResetPassword,
     meta: { hideHeaderFooter: true }, 
+  },
+  {
+    path:'/forgot-password',
+    name: 'ForgotPassword',
+    component: ForgotPassword,
+    meta: { hideHeaderFooter: true },
   },
   {
     path: '/:pathMatch(.*)*',
