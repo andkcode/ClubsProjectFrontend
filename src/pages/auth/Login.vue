@@ -29,7 +29,6 @@
             v-model="email"
             type="email"
             id="email"
-            required
             class="w-full px-4 py-3 rounded-xl bg-white/5 text-white placeholder-gray-500 focus:ring-2 focus:ring-white/30 border border-white/10"
             placeholder="you@example.com"
           />
@@ -41,7 +40,6 @@
             v-model="password"
             type="password"
             id="password"
-            required
             class="w-full px-4 py-3 rounded-xl bg-white/5 text-white placeholder-gray-500 focus:ring-2 focus:ring-white/30 border border-white/10"
             placeholder="••••••••"
           />
@@ -66,14 +64,32 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useAuth } from '../../composables/useAuth';
 import { useRouter } from 'vue-router';
+import { toast } from 'vue-sonner';
 
 const router = useRouter();
 const { login, email, password, errorMessage } = useAuth();
 
 const handleLogin = async () => {
+  if (!email.value || email.value.trim() === '' ) {
+    toast('Missing Email', {
+      description: 'Please enter your email.',
+      duration: 2500,
+      position: 'top-right',
+      type:'warning'
+    });
+    return;
+  } else if(!password.value || password.value.trim() === '') {
+    toast('Missing Password', {
+      description: 'Please enter your password.',
+      duration: 2500,
+      position: 'top-right',
+      type: 'warning'
+    });
+    return;
+  }
+
   await login(email.value, password.value, router);
 };
-
 const mouseMovePosition = ref({ x: 0, y: 0 });
 
 const handleMouseMove = (e) => {
