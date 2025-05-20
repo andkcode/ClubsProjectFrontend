@@ -1,6 +1,6 @@
 <template>
   <MainView />
-  <Toaster richColors position="top-right"/>
+  <Toaster richColors position="top-right" closeButton />
 </template>
 
 <script setup lang="ts">
