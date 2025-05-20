@@ -24,18 +24,7 @@
         <!-- Login Form -->
         <form @submit.prevent="handleLogin" class="space-y-5">
           <div>
-            <label class="block text-sm text-gray-300 mb-1" for="email">New Password</label>
-            <input
-              v-model="email"
-              type="email"
-              id="email"
-              class="w-full px-4 py-3 rounded-xl bg-white/5 text-white placeholder-gray-500 focus:ring-2 focus:ring-white/30 border border-white/10"
-              placeholder="you@example.com"
-            />
-          </div>
-  
-          <div>
-            <label class="block text-sm text-gray-300 mb-1" for="password">Confirm Password</label>
+            <label class="block text-sm text-gray-300 mb-1" for="password">New Password</label>
             <input
               v-model="password"
               type="password"
@@ -43,7 +32,17 @@
               class="w-full px-4 py-3 rounded-xl bg-white/5 text-white placeholder-gray-500 focus:ring-2 focus:ring-white/30 border border-white/10"
               placeholder="••••••••"
             />
-            <p class="inline-block text-start mt-2 ml-1 text-sm text-[hsl(var(--muted-foreground))] hover:cursor-pointer hover:text-white duration-300 transition-colors">Forgot password?</p>
+          </div>
+  
+          <div>
+            <label class="block text-sm text-gray-300 mb-1" for="confirmPassword">Confirm Password</label>
+            <input
+              v-model="confirmPassword"
+              type="password"
+              id="confirmPassword"
+              class="w-full px-4 py-3 rounded-xl bg-white/5 text-white placeholder-gray-500 focus:ring-2 focus:ring-white/30 border border-white/10"
+              placeholder="••••••••"
+            />
           </div>
   
           <button
@@ -54,7 +53,6 @@
           </button>
         </form>
         <div class="flex justify-center mt-4">
-    <router-link to="/register" class="inline-block text-sm text-[hsl(var(--muted-foreground))] hover:cursor-pointer hover:text-white transition-colors duration-300">Don't you have an account?</router-link>
   </div>
       </div>
     </div>
@@ -65,31 +63,12 @@
   import { useAuth } from '../../composables/useAuth';
   import { useRouter } from 'vue-router';
   import { toast } from 'vue-sonner';
-  
+
+  const password = ref('');
+  const confirmPassword = ref('');
+  const token = ref('');
   const router = useRouter();
-  const { login, email, password, errorMessage } = useAuth();
   
-  const handleLogin = async () => {
-    if (!email.value || email.value.trim() === '' ) {
-      toast('Missing Email', {
-        description: 'Please enter your email.',
-        duration: 2500,
-        position: 'top-right',
-        type:'warning'
-      });
-      return;
-    } else if(!password.value || password.value.trim() === '') {
-      toast('Missing Password', {
-        description: 'Please enter your password.',
-        duration: 2500,
-        position: 'top-right',
-        type: 'warning'
-      });
-      return;
-    }
-  
-    await login(email.value, password.value, router);
-  };
   const mouseMovePosition = ref({ x: 0, y: 0 });
   
   const handleMouseMove = (e) => {
