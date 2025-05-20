@@ -29,7 +29,6 @@
               v-model="username"
               type="text"
               id="username"
-              required
               class="w-full px-4 py-3 rounded-xl bg-white/5 text-white placeholder-gray-500 focus:ring-2 focus:ring-white/30 border border-white/10"
               placeholder="ClubUser"
             />
@@ -41,7 +40,6 @@
               v-model="email"
               type="email"
               id="email"
-              required
               class="w-full px-4 py-3 rounded-xl bg-white/5 text-white placeholder-gray-500 focus:ring-2 focus:ring-white/30 border border-white/10"
               placeholder="you@example.com"
             />
@@ -53,7 +51,6 @@
               v-model="password"
               type="password"
               id="password"
-              required
               class="w-full px-4 py-3 rounded-xl bg-white/5 text-white placeholder-gray-500 focus:ring-2 focus:ring-white/30 border border-white/10"
               placeholder="••••••••"
             />
@@ -65,7 +62,6 @@
               v-model="confirmPassword"
               type="password"
               id="confirmPassword"
-              required
               class="w-full px-4 py-3 rounded-xl bg-white/5 text-white placeholder-gray-500 focus:ring-2 focus:ring-white/30 border border-white/10"
               placeholder="••••••••"
             />
@@ -73,24 +69,11 @@
   
           <button
             type="submit"
-            :disabled="isLoading"
             class="relative w-full hover:cursor-pointer bg-white/10 hover:bg-white/20 text-white font-semibold py-3 rounded-xl border border-white/20 backdrop-blur-md"
           >
-            <span v-if="!isLoading">Register</span>
-            <span v-else class="absolute inset-0 flex items-center justify-center">
-              <svg class="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24" fill="none">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-                <path class="opacity-75" fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4zm2 5.3A8 8 0 014 12H0c0 3 1.1 5.8 3 7.9l3-2.6z" />
-              </svg>
-            </span>
+            <span >Register</span>
           </button>
         </form>
-  
-        <!-- Error Message -->
-        <p v-if="errorMessage" class="text-red-500 text-center mt-4">
-          {{ errorMessage }}
-        </p>
   
         <!-- Login Link -->
         <div class="text-center mt-6 flex items-center justify-center gap-2 text-gray-400">
@@ -105,6 +88,7 @@
   import { ref, onMounted, onUnmounted } from 'vue';
   import { useAuth } from '../../composables/useAuth';
   import { useRouter } from 'vue-router';
+  import { toast } from 'vue-sonner';
   
   const router = useRouter();
   const { register, username, email, password, errorMessage } = useAuth();
@@ -113,14 +97,49 @@
   const confirmPassword = ref('');
   
   const handleRegister = async () => {
-    if (password.value !== confirmPassword.value) {
-      errorMessage.value = "Passwords don't match";
-      return;
-    }
-    
-    isLoading.value = true;
+
+    if(!username.value || username.value.trim() === '') {
+      toast('Missing Username', {
+      description: 'Please enter your username.',
+      duration: 2500,
+      position: 'top-right',
+      type: 'warning'
+    });
+    return;
+    } else if(!email.value || email.value.trim() === '') {
+    toast('Missing Email', {
+      description: 'Please enter your email.',
+      duration: 2500,
+      position: 'top-right',
+      type:'warning'
+    });
+    return;
+    } else if(password.value.length < 8) {
+    toast('Password too short', {
+      description: 'Password must be at least 8 characters.',
+      duration: 2500,
+      position: 'top-right',
+      type: 'info'
+    });
+    return;
+    } else if (!password.value || password.value.trim() === '') {
+      toast('Missing Password', {
+      description: 'Please enter your password.',
+      duration: 2500,
+      position: 'top-right',
+      type: 'warning'
+    });
+  } else if (password.value !== confirmPassword.value) {
+    toast('Passwords do not match', {
+      description: 'Please confirm your password.',
+      duration: 2500,
+      position: 'top-right',
+      type: 'warning'
+    });
+    return;
+  }
+  
     await register(email.value, password.value, username.value, router);
-    isLoading.value = false;
   };
   
   const mouseMovePosition = ref({ x: 0, y: 0 });
