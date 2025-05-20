@@ -50,15 +50,9 @@
 
         <button
           type="submit"
-          :disabled="isLoading"
           class="relative w-full bg-white/10 hover:bg-white/20 text-white font-semibold py-3 rounded-xl border border-white/20 backdrop-blur-md hover:cursor-pointer"
         >
           <span>Log In</span>
-          <span class="absolute inset-0 flex items-center justify-center">
-              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-              <path class="opacity-75" fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4zm2 5.3A8 8 0 014 12H0c0 3 1.1 5.8 3 7.9l3-2.6z" />
-          </span>
         </button>
       </form>
       <div class="flex justify-center mt-4">
@@ -77,9 +71,7 @@ const router = useRouter();
 const { login, email, password, errorMessage } = useAuth();
 
 const handleLogin = async () => {
-  isLoading.value = true;
   await login(email.value, password.value, router);
-  isLoading.value = false;
 };
 
 const mouseMovePosition = ref({ x: 0, y: 0 });
