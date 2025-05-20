@@ -53,22 +53,14 @@
           :disabled="isLoading"
           class="relative w-full bg-white/10 hover:bg-white/20 text-white font-semibold py-3 rounded-xl border border-white/20 backdrop-blur-md hover:cursor-pointer"
         >
-          <span v-if="!isLoading">Log In</span>
-          <span v-else class="absolute inset-0 flex items-center justify-center">
-            <svg class="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24" fill="none">
+          <span>Log In</span>
+          <span class="absolute inset-0 flex items-center justify-center">
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
               <path class="opacity-75" fill="currentColor"
                 d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4zm2 5.3A8 8 0 014 12H0c0 3 1.1 5.8 3 7.9l3-2.6z" />
-            </svg>
           </span>
         </button>
       </form>
-
-      <!-- Error Message -->
-      <p v-if="errorMessage" class="text-red-500 text-center mt-4">
-        {{ errorMessage }}
-      </p>
-
       <div class="flex justify-center mt-4">
   <router-link to="/register" class="inline-block text-sm text-[hsl(var(--muted-foreground))] hover:cursor-pointer hover:text-white transition-colors duration-300">Don't you have an account?</router-link>
 </div>
@@ -83,7 +75,6 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const { login, email, password, errorMessage } = useAuth();
-const isLoading = ref(false);
 
 const handleLogin = async () => {
   isLoading.value = true;
