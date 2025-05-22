@@ -1,8 +1,10 @@
 import { ref } from 'vue';
 import axios from 'axios';
-import { toast } from 'vue-sonner'
+import { toast } from 'vue-sonner';
+
 interface AuthResponse {
     token: string;
+    newToken: string,
 }
 
 const isAuthenticated = ref<boolean>(false);
@@ -10,6 +12,8 @@ const email = ref<string>('');
 const password = ref<string>('');
 const username = ref<string>('');
 const errorMessage = ref<string>('');
+const newPassword = ref<string>('');
+const newToken = ref<string>(''); 
 
 const initAuth = (): void => {
     refreshAuth();
@@ -24,7 +28,7 @@ const initAuth = (): void => {
                     duration: 2000,
                     type: 'error',
                     position: 'top-right', 
-                  })
+                });
 
                 isAuthenticated.value = false;
                 localStorage.removeItem('auth-token');
@@ -53,7 +57,7 @@ const login = async (em: string, pass: string, router: any): Promise<void> => {
                 duration: 1000,
                 type: 'success',
                 position: 'bottom-right', 
-              })
+            });
 
             setTimeout(() => {
                 router.push('/');
@@ -64,7 +68,7 @@ const login = async (em: string, pass: string, router: any): Promise<void> => {
                 duration: 2000,
                 type: 'error',
                 position: 'top-right', 
-              })
+            });
         }
     } catch (error: any) {
         console.error("Login error:", error);
@@ -74,7 +78,7 @@ const login = async (em: string, pass: string, router: any): Promise<void> => {
             duration: 2500,
             type: 'error',
             position: 'top-right', 
-          })
+        });
     }
 };
 
@@ -99,9 +103,9 @@ const register = async (em: string, pass: string, us: string, router: any): Prom
                 duration: 1000,
                 position: 'bottom-right', 
                 type: "success"
-              })
+            });
               
-              setTimeout(() => {
+            setTimeout(() => {
                 router.push('/');
             }, 1100);
 
@@ -110,18 +114,19 @@ const register = async (em: string, pass: string, us: string, router: any): Prom
                 duration: 2500,
                 position: 'top-right',
                 type: 'error',
-              })
+            });
         }
     } catch (error: any) {
         console.error("Registration error:", error);
 
         errorMessage.value = 'Registration failed: ' + (error.response?.data?.message || 'Unknown error');
 
-        toast('Registration failed:', {
+        toast('Registration failed', {
+            description: error.response?.data?.message || 'Unknown error',
             duration: 2500,
             position: 'top-right',
             type: 'error',
-          })
+        });
     }
 };
 
@@ -129,6 +134,7 @@ const logout = (router: any): void => {
     localStorage.removeItem('auth-token');
     isAuthenticated.value = false;
     email.value = '';
+    username.value = '';
     password.value = '';
     console.log("User logged out, token removed");
 
@@ -137,7 +143,7 @@ const logout = (router: any): void => {
         duration: 2500,
         position: 'top-left', 
         type: 'info',
-      })
+    });
 
     router.push('/login');
 };
@@ -157,7 +163,7 @@ const getAuthHeader = (contentType = 'application/json') => {
             duration: 2500,
             position: 'top-right', 
             type: 'error',
-          })
+        });
           
         return {};
     }
@@ -168,6 +174,51 @@ const getAuthHeader = (contentType = 'application/json') => {
             'Content-Type': contentType
         }
     };
+};
+
+const forgotPassword = async (emailToSend: string): Promise<void> => {
+    try {
+        await axios.post<AuthResponse>('http://localhost:8080/auth/forgot-password', { email: emailToSend });
+
+        toast('Reset link sent', {
+            description: 'Check your email for a reset link',
+            duration: 3000,
+            position: 'top-right',
+            type: 'success',
+        });
+    } catch (error: any) {
+        console.error("Forgot password error:", error);
+        toast('Failed to send reset link', {
+            description: error.response?.data?.message || 'Unknown error',
+            duration: 3000,
+            position: 'top-right',
+            type: 'error',
+        });
+    }
+};
+
+const resetPassword = async (newt: string, newp: string): Promise<void> => {
+    try {
+        await axios.post<AuthResponse>('http://localhost:8080/auth/reset-password', {
+            newToken: newt,
+            newPassword: newp
+        });
+
+        toast('Password reset successful', {
+            duration: 2000,
+            position: 'top-right',
+            type: 'success',
+        });
+
+    } catch (error: any) {
+        console.error("Reset password error:", error);
+        toast('Failed to reset password', {
+            description: error.response?.data?.message || 'Unknown error',
+            duration: 2000,
+            position: 'top-right',
+            type: 'error',
+        });
+    }
 };
 
 initAuth();
@@ -183,6 +234,10 @@ export function useAuth() {
         password,
         refreshAuth,
         errorMessage,
-        getAuthHeader
+        getAuthHeader,
+        forgotPassword,
+        newPassword,
+        newToken,
+        resetPassword
     };
 }
