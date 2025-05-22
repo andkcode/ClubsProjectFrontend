@@ -43,7 +43,7 @@
             class="w-full px-4 py-3 rounded-xl bg-white/5 text-white placeholder-gray-500 focus:ring-2 focus:ring-white/30 border border-white/10"
             placeholder="••••••••"
           />
-          <p class="inline-block text-start mt-2 ml-1 text-sm text-[hsl(var(--muted-foreground))] hover:cursor-pointer hover:text-white duration-300 transition-colors">Forgot password?</p>
+          <router-link to="/forgot-password" class="inline-block text-start mt-2 ml-1 text-sm text-[hsl(var(--muted-foreground))] hover:cursor-pointer hover:text-white duration-300 transition-colors">Forgot password?</router-link>
         </div>
 
         <button
@@ -70,7 +70,7 @@ const router = useRouter();
 const { login, email, password, errorMessage } = useAuth();
 
 const handleLogin = async () => {
-  if (!email.value || email.value.trim() === '' ) {
+  if (!email.value || email.value.trim() === '') {
     toast('Missing Email', {
       description: 'Please enter your email.',
       duration: 2500,
